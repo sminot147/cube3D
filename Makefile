@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+         #
+#    By: v <v@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 18:12:50 by sminot            #+#    #+#              #
-#    Updated: 2025/03/25 15:29:14 by vgarcia          ###   ########.fr        #
+#    Updated: 2025/03/25 21:30:40 by v                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ UTILS_DIR = $(SRC_DIR)utils/
 PROCESS_DIR = $(SRC_DIR)process/
 
 PARSE = parse.c
-INIT = init_data.c
+INIT = init.c load.c
 RENDER = render_view.c
-UTILS = free_double_array.c error.c
+UTILS = free_double_array.c error.c render_tools.c
 PROCESS = #init_data.c
 
 
@@ -36,8 +36,8 @@ FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
 	$(addprefix $(UTILS_DIR), $(UTILS))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD -g3
-MLX_FLAGS = -L$(MLX_DIR) -lXext -lX11 -lm
+CFLAGS = -Wall -Wextra  -I$(INCLUDE) -MMD -g3
+MLX_FLAGS = -L$(MLX_DIR) -l$(MLX_DIR) -lXext -lX11 -lm
 INCLUDE = include
 
 OBJ_DIR = .obj/

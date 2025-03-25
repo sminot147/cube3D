@@ -20,6 +20,12 @@
 # include <math.h>
 # include <fcntl.h>
 
+# define WIN_X 1920
+# define WIN_Y 1080
+
+# define MINI_W 1920
+# define MINI_H 1080
+
 typedef enum e_bool
 {
 	FALSE ,
@@ -36,15 +42,15 @@ typedef enum e_cardinal
 
 typedef struct s_map
 {
-	unsigned long	x_max; // utiliser le vec2d ?
+	unsigned long	x_max;
 	unsigned long	y_max;
 	char			**map;
 }	t_map;
 
-typedef	struct s_vec
+typedef	struct s_vec2d
 {
-	long int x;
-	long int y;
+	int x;
+	int y;
 }	t_vec2d;
 
 typedef struct	s_mlx_inf
@@ -55,15 +61,15 @@ typedef struct	s_mlx_inf
 	char	*data;
 	int		bpp;
 	int		endian;
-	int		sl;
-}	t_mlx_inf;
+	int		size_len;
+}	t_mlx_data;
 
 typedef struct s_data
 {
 	t_map		*map;
 	t_cardinal	orientation;
 	t_vec2d		player_pos;
-	t_mlx_inf	*inf;
+	t_mlx_data	*inf;
 }	t_data;
 
 /*---------------------------------------------------------------------------*/
