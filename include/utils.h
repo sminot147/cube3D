@@ -6,17 +6,26 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:34:07 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/24 19:09:28 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 18:43:07 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
+# include "cube.h"
+
 /*---------------------------------------------------------------------------*/
-/*                        free_double_array                                  */
+/*                                exit.c                                     */
+/*---------------------------------------------------------------------------*/
+void	safe_exit(t_data *data);
+void	safe_exit_parse(t_data *data, t_lststr **lst_map, char *line);
+
+/*---------------------------------------------------------------------------*/
+/*                               lst_str.c                                   */
 /*---------------------------------------------------------------------------*/
 
-void	free_double_array(void **array);
+t_bool	add_content_lst(t_lststr **lst_str, char *new_content);
+void	clear_lst_str(t_lststr **lst_str);
 
 #endif

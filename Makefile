@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 18:12:50 by sminot            #+#    #+#              #
-#    Updated: 2025/03/24 18:33:37 by sminot           ###   ########.fr        #
+#    Updated: 2025/03/25 18:46:23 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,14 @@ PARSE_DIR = $(SRC_DIR)parse/
 
 PARSE = parse.c\
 
+UTILS_DIR =  $(SRC_DIR)utils/
 
+UTILS = liste_str.c\
+		exit.c\
 
 FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
-	$(addprefix $(PARSE_DIR), $(PARSE))
+	$(addprefix $(PARSE_DIR), $(PARSE))\
+	$(addprefix $(UTILS_DIR), $(UTILS))\
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD -g3

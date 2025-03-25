@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:31:18 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/24 18:00:04 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 18:51:28 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,18 @@ void	check_arg(int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_map	*map;
+	t_data	*data;
+	t_data test;
 
 	check_arg(ac, av);
+	//init_map_and_data(&map, &data);
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 	{
 		putstr_fd("Error\nDuring a malloc\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	parse_map(av[1], map);
+	data = &test;
+	test.map = map;
+	parse_map(av[1], map, data);
 }

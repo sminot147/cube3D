@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_double_array.c                                :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 18:33:01 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 17:50:54 by sminot           ###   ########.fr       */
+/*   Created: 2025/03/25 18:32:30 by sminot            #+#    #+#             */
+/*   Updated: 2025/03/25 19:00:29 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "cube.h"
+#include "utils.h"
 
-/**
- * @brief Frees a dynamically allocated double pointer array.
- * @param array The double pointer array to free.
- */
-void	free_double_array(void **array)
+void	safe_exit(t_data *data)
 {
-	int	i;// la fonction est utilisé?????????????????????
+	free(data->map);
+	exit(EXIT_FAILURE);
+}
 
-	if (!array)
-		return ;
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
+void	safe_exit_parse(t_data *data, t_lststr **lst_map, char *line)
+{
+	free(line);
+	clear_lst_str(lst_map);
+	safe_exit(data);
 }
