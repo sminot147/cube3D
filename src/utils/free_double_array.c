@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:33:01 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 17:50:54 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 21:44:45 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 void	free_double_array(void **array)
 {
-	int	i;// la fonction est utilisé?????????????????????
+	size_t	i;
 
 	if (!array)
 		return ;

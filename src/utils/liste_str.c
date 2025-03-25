@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:10:35 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 18:45:26 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 20:59:32 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,19 @@ t_bool	add_content_lst(t_lststr **lst_str, char *new_content)
 		return (FALSE);
 	add_lst_str(lst_str, node);
 	return (TRUE);
+}
+
+size_t	len_lst(t_lststr **lst_str)
+{
+	size_t		len;
+	t_lststr	*current;
+
+	len = 0;
+	current = *lst_str;
+	while(current)
+	{
+		current = current->next;
+		++len;
+	}
+	return (len);
 }

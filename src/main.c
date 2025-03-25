@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:31:18 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 18:51:28 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 21:13:25 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ int	main(int ac, char **av)
 	}
 	data = &test;
 	test.map = map;
-	parse_map(av[1], map, data);
+	parse_map(av[1], data);
 }

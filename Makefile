@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 18:12:50 by sminot            #+#    #+#              #
-#    Updated: 2025/03/25 18:46:23 by sminot           ###   ########.fr        #
+#    Updated: 2025/03/25 21:42:40 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,13 @@ SRC_FILE = main.c\
 PARSE_DIR = $(SRC_DIR)parse/
 
 PARSE = parse.c\
+	fill_map.c\
 
 UTILS_DIR =  $(SRC_DIR)utils/
 
-UTILS = liste_str.c\
-		exit.c\
+UTILS = exit.c\
+	free_double_array.c\
+	liste_str.c\
 
 FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
 	$(addprefix $(PARSE_DIR), $(PARSE))\

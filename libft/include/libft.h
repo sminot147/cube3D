@@ -101,6 +101,7 @@ char		*get_next_line(int fd);
 int			error_handling(char **line, char *buffer);
 void		str_n_append(char **str, char *buffer, size_t len_buf);
 size_t		size_beffor_new_line(char *buffer);
+char		*get_next_line_without_nl(int fd);
 
 /*----------------------------------------------------------------------------*/
 /*                                LINKED LIST                                 */
