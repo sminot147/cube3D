@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 20:54:04 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 22:43:58 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 23:03:51 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ static void	error_in_map(t_lststr **lst_map, t_data *data, char *line_error)
 	safe_exit(data);
 }
 
+static void	place_player(t_data *data, size_t x_pos, size_t y_pos, char c)
+{
+	data->x_player = x_pos;
+	data->y_player = y_pos;
+	if (c == 'N')
+		data->player_direction = NORTH;
+	if (c == 'E')
+		data->player_direction = EAST;
+	if (c == 'S')
+		data->player_direction = SOUTH;
+	if (c == 'W')
+		data->player_direction = WEST;
+}
+
 static void	fill_map(t_lststr **lst_map, t_data *data)
 {
 	size_t		i;
@@ -55,7 +69,7 @@ static void	fill_map(t_lststr **lst_map, t_data *data)
 				data->map->map[i][j] = -1;
 			else if (ft_strchr("NESW", current->content[j]) != 0)
 			{
-				//place_the_player;
+				place_player(data, j, i, current->content[j]);
 				data->map->map[i][j] = 0;
 			}
 			else if(ft_strchr("01", current->content[j]) != 0)
@@ -79,7 +93,22 @@ void	print_lststr(t_lststr *lst)
     }
 }
 
-void print_map(const t_map *m) {
+char *direct(t_direction direction)
+{
+	if (direction == NORTH)
+		return ("NORTH");
+	if (direction == EAST)
+		return ("EAST");
+	if (direction == SOUTH)
+		return ("SOUTH");
+	if (direction == WEST)
+		return ("WEST");
+	return ("");
+}
+
+void print_map(t_data *data) {
+	t_map *m = data->map;
+	ft_printf("player pos : x = %i et y = %i direction = %s\n", data->x_player, data->y_player, direct(data->player_direction));
     ft_printf("Map dimensions: %i x %i\n", m->x_max, m->y_max);
     for (size_t i = 0; i <= m->y_max; i++) {
         for (size_t j = 0; j <= m->x_max; j++) {
@@ -97,5 +126,6 @@ void	creat_and_fill_map(t_lststr **lst_map, t_data *data)
 	//print_lststr(*lst_map);
 	creat_map(lst_map, data);
 	fill_map(lst_map, data);
-	print_map(data->map);
+	print_map(data);
+	
 }

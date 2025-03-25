@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:35:44 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 22:25:54 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 23:02:06 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ typedef enum e_bool
 	TRUE
 }	t_bool;
 
+typedef enum e_direction
+{
+	NORTH ,
+	EAST ,
+	SOUTH ,
+	WEST
+}	t_direction;
+
 typedef struct s_map
 {
 	size_t	x_max;
@@ -34,7 +42,10 @@ typedef struct s_map
 
 typedef struct s_data
 {
-	t_map	*map;
+	t_map		*map;
+	size_t		x_player;
+	size_t		y_player;
+	t_direction	player_direction;
 }	t_data;
 
 /*---------------------------------------------------------------------------*/
