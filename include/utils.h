@@ -3,20 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:34:07 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/24 19:09:28 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 15:27:06 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
+typedef struct s_data t_data;
+
 /*---------------------------------------------------------------------------*/
 /*                        free_double_array                                  */
 /*---------------------------------------------------------------------------*/
 
 void	free_double_array(void **array);
+
+
+/* ************************************************************************** */
+/*									ERROR									  */
+/* ************************************************************************** */
+
+void	exit_free_with_msg(char *comment, t_data *data, int code);
+void	exit_with_msg(char *comment, int code);
 
 #endif

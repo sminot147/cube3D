@@ -3,31 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
+#    By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 18:12:50 by sminot            #+#    #+#              #
-#    Updated: 2025/03/24 18:33:37 by sminot           ###   ########.fr        #
+#    Updated: 2025/03/25 15:29:14 by vgarcia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRC_DIR = src/
-
 SRC_FILE = main.c\
 
+SRC_DIR = src/
 PARSE_DIR = $(SRC_DIR)parse/
+INIT_DIR = $(SRC_DIR)init/
+RENDER_DIR = $(SRC_DIR)render/
+UTILS_DIR = $(SRC_DIR)utils/
+PROCESS_DIR = $(SRC_DIR)process/
 
-PARSE = parse.c\
-
+PARSE = parse.c
+INIT = init_data.c
+RENDER = render_view.c
+UTILS = free_double_array.c error.c
+PROCESS = #init_data.c
 
 
 FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
-	$(addprefix $(PARSE_DIR), $(PARSE))
+	$(addprefix $(INIT_DIR), $(INIT))\
+	$(addprefix $(PARSE_DIR), $(PARSE))\
+	$(addprefix $(RENDER_DIR), $(RENDER))\
+	$(addprefix $(PROCESS_DIR), $(PROCESS))\
+	$(addprefix $(UTILS_DIR), $(UTILS))
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD -g3
-MLX_FLAGS = -L$(MLX_DIR) -lXext -lX11
+MLX_FLAGS = -L$(MLX_DIR) -lXext -lX11 -lm
 INCLUDE = include
 
 OBJ_DIR = .obj/

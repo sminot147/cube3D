@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:00:31 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/24 20:05:51 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 15:30:06 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,16 +102,14 @@ static void	creat_and_fill_map(char *map_name, t_map *map)
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 	{
-		putstr_fd("Error\nMap not open\n", 2);
 		free(map);
-		exit(EXIT_FAILURE);
+		exit_with_msg("Map not open", EXIT_FAILURE);
 	}
 	set_x_and_y_max(fd, map);			//recupere la liste chainer + changer le nom de la fonciton
 	if (close(fd))
 	{
-		putstr_fd("Error\nMap refuse to close\n", 2);
 		free(map);
-		exit(EXIT_FAILURE);
+		exit_with_msg("Map refuses to close", EXIT_FAILURE);
 	}
 	//dup chaque element de lise pour avoir une map rectangle 
 	//					-> completer par des espaces ' ' les lignes plus courtes;

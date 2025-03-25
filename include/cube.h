@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 17:35:44 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/24 20:01:11 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/25 15:04:28by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../mlx/mlx.h"
 # include "utils.h"
 
+# include <math.h>
 # include <fcntl.h>
 
 typedef enum e_bool
@@ -25,16 +26,44 @@ typedef enum e_bool
 	TRUE
 }	t_bool;
 
+typedef enum e_cardinal
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}	t_cardinal;
+
 typedef struct s_map
 {
-	unsigned long	x_max;
+	unsigned long	x_max; // utiliser le vec2d ?
 	unsigned long	y_max;
 	char			**map;
 }	t_map;
 
+typedef	struct s_vec
+{
+	long int x;
+	long int y;
+}	t_vec2d;
+
+typedef struct	s_mlx_inf
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*data;
+	int		bpp;
+	int		endian;
+	int		sl;
+}	t_mlx_inf;
+
 typedef struct s_data
 {
-	t_map	*map;
+	t_map		*map;
+	t_cardinal	orientation;
+	t_vec2d		player_pos;
+	t_mlx_inf	*inf;
 }	t_data;
 
 /*---------------------------------------------------------------------------*/
@@ -49,5 +78,9 @@ typedef struct s_reading_map_status
 }	t_reading_map_status;
 
 void	parse_map(char *map_name, t_map *map);
+
+void	init_data(t_map *map, t_data *data);
+
+void	render_view(t_data *data);
 
 #endif
