@@ -89,5 +89,5 @@ void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
 void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts)
 {
 	draw2d_circle(inf, data->player_pos, ts, GREEN);
-	// calc_view(inf, player_pos, ts, data);
+	// calc_view(inf, player_pos, ts, data); ?
 }

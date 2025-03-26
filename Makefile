@@ -11,13 +11,14 @@ INIT_DIR = $(SRC_DIR)init/
 INIT = init.c
 
 RENDER_DIR = $(SRC_DIR)render/
-RENDER = render_view.c
+RENDER = render_view.c\
+		draw2d.c
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\
 		error.c\
-		render_tools.c\
-		exit.c liste_str.c\
+		exit.c\
+		liste_str.c\
 		vector.c
 
 PROCESS_DIR = $(SRC_DIR)process/
