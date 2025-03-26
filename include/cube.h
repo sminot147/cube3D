@@ -26,4 +26,15 @@ void	init_data(t_data *data);
 void	render_view(t_data *data);
 
 
+/* ************************************************************************** */
+/*								PROCESS										  */
+/* ************************************************************************** */
+
+
+void	process_input(t_data *data);
+void	try_move_front(t_data *data);
+void	try_move_left(t_data *data);
+void	try_move_back(t_data *data);
+void	try_move_right(t_data *data);
+
 #endif

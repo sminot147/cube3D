@@ -15,10 +15,10 @@ int	main(int ac, char **av)
 		exit_with_msg("Allocation", 1);
 	parse_map(av[1], &data);
 	init_data(&data);
-	render_view(&data);
 	while (TRUE)
 	{
-		//process_input();
+		render_view(&data);
+		process_input(&data);
 	}
 	return (1);
 }

@@ -8,6 +8,7 @@ void	render_view(t_data *data)
 	t_mlx_data *inf;
 
 	inf = data->inf;
+	ft_bzero(inf->data, inf->size_len * inf->bpp);
 	fill_img(data);
 	mlx_put_image_to_window(inf->mlx, inf->win, inf->img, 0, 0);
 }
@@ -20,3 +21,13 @@ static void	fill_img(t_data *data)
 	draw2d_map(tile_size, data->map, data->inf);
 	draw2d_camera(data->map, data->inf, data, tile_size);
 }
+
+/*
+typedef    struct s_end_ray
+{
+    float    x;
+    float    y;
+    float    dist;
+}    t_end_ray;
+tracer point entre end_ray et player (soustraire end_ray par player) ou inverse
+*/

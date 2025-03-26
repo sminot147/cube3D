@@ -5,18 +5,19 @@ static void	free_data(t_data *data);
 
 void	exit_free_with_msg(char *comment, t_data *data, int code)
 {
-	if (data)
-	{
-		free_data(data);
-	}
+	// close_mlx(data->inf);
+	free_data(data);
 	exit_with_msg(comment, code);
 }
 
 void	exit_with_msg(char *comment, int code)
 {
-	putstr_fd("Error\n", 2);
-	putstr_fd(comment, 2);
-	putstr_fd("\n", 2);
+	if (code)
+	{
+		putstr_fd("Error\n", 2);
+		putstr_fd(comment, 2);
+		putstr_fd("\n", 2);
+	}
 	exit(code);
 }
 
@@ -24,9 +25,9 @@ static void	free_data(t_data *data)
 {
 	if (data->map)
 	{
-		if (data->map->map)
+		if (data->map->grid)
 		{
-			free_double_array((void **)data->map->map);
+			free_double_array((void **)data->map->grid);
 		}
 		free(data->map);
 	}

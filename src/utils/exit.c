@@ -4,7 +4,7 @@
 void	safe_exit(t_data *data)
 {
 	if (data->map)
-		free_double_array((void **)data->map->map);
+		free_double_array((void **)data->map->grid);
 	free(data->map);
 	exit(EXIT_FAILURE);
 }

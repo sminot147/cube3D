@@ -61,12 +61,12 @@ void	draw2d_circle(t_mlx_data *inf, t_vf2d pos, int diam, int color)
 
 void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
 {
-	int		cur_x;
-	int		cur_y;
+	size_t	cur_x;
+	size_t	cur_y;
 	int		**grid;
 
 	cur_y = 0;
-	grid = map->map;
+	grid = map->grid;
 	while (cur_y <= map->y_max)
 	{
 		cur_x = 0;

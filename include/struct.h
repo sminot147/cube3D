@@ -1,6 +1,8 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+#include "unistd.h"
+
 typedef enum e_bool
 {
 	FALSE ,
@@ -19,7 +21,7 @@ typedef struct s_map
 {
 	size_t	x_max;
 	size_t	y_max;
-	int		**map;
+	int		**grid;
 }	t_map;
 
 typedef	struct s_vi2d
