@@ -17,7 +17,7 @@ static void	fill_img(t_data *data)
 {
 	int	tile_size;
 
-	tile_size = MINI_W / (data->map->x_max + 1);
+	tile_size = data->tile_size;
 	draw2d_map(tile_size, data->map, data->inf);
 	draw2d_camera(data->map, data->inf, data, tile_size);
 }

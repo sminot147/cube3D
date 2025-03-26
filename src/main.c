@@ -7,8 +7,6 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	(void)ac;
-	(void)av;
 	check_arg(ac, av);
 	data.map = ft_calloc(1, sizeof(t_map));
 	if (!data.map)
@@ -37,22 +35,3 @@ static void	check_arg(int ac, char **av)
 		exit_with_msg("Map is not a .cub", EXIT_FAILURE);
 	}
 }
-
-
-// int	main(int ac, char **av)
-// {
-// 	t_data	data;
-// 	t_map	*map;
-
-// 	// check_arg(ac, av);
-// 	init_map_and_data(&map, &data);
-// 	map = ft_calloc(1, sizeof(t_map));
-// 	if (!map)
-// 	{
-// 		// calc_everything();
-// 		render_view(&data);
-// 		// process_input();
-// 	}
-// 	data.map = map;
-// 	parse_map(av[1], &data);
-// }

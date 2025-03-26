@@ -31,15 +31,6 @@ void	free_double_array(void **array);
 void	exit_with_msg(char *comment, int code);
 void	exit_free_with_msg(char *comment, t_data *data, int code);
 
-/* ************************************************************************** */
-/*								RENDER_TOOLS								  */
-/* ************************************************************************** */
-
-void	set_pixel(t_mlx_data *inf, int x, int y, int color);
-void	draw2d_cube(t_mlx_data *inf, t_vi2d position, int tile_size, int color);
-void	draw2d_circle(t_mlx_data *inf, t_vf2d position, int diam, int color);
-void	draw2d_map(int ts, t_map *map, t_mlx_data *inf);
-void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts);
 
 /* ************************************************************************** */
 /*									VEC_TOOLS								  */
@@ -48,5 +39,11 @@ void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts);
 t_vi2d	sum_vec2d(t_vi2d position, t_vi2d to_sum);
 t_vi2d	sub_vec2d(t_vi2d position, t_vi2d to_sub);
 t_vi2d	mul_vec2d(t_vi2d position, t_vi2d to_mul);
+
+/* ************************************************************************** */
+/*									TIME									  */
+/* ************************************************************************** */
+
+int	wait_fps(void);
 
 #endif

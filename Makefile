@@ -12,14 +12,16 @@ INIT = init.c
 
 RENDER_DIR = $(SRC_DIR)render/
 RENDER = render_view.c\
-		draw2d.c
+		draw2d.c\
+		geometry.c
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\
 		error.c\
 		exit.c\
 		liste_str.c\
-		vector.c
+		vector.c\
+		frame.c
 
 PROCESS_DIR = $(SRC_DIR)process/
 PROCESS = input.c\

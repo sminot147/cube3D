@@ -49,9 +49,10 @@ typedef struct	s_mlx_inf
 
 typedef struct s_data
 {
-	t_map		*map;
-	t_vf2d		player_pos;
+	int			tile_size;
 	t_direction	player_dir;
+	t_vf2d		player_pos;
+	t_map		*map;
 	t_mlx_data	*inf;
 }	t_data;
 

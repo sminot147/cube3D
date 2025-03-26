@@ -28,7 +28,7 @@ static void init_ptrs(t_data *data)
 
 /**
  * @brief Allocate data pointers
- * @param t_map, t_data
+ * @param t_data
  */
 static void init_allocs(t_data *data)
 {	
@@ -47,7 +47,7 @@ static void init_allocs(t_data *data)
  */
 static void init_vars(t_data *data)
 {	
-	(void)data;
+	data->tile_size = MINI_W / (data->map->x_max + 1);
 }
 
 /**
