@@ -1,16 +1,20 @@
 #include "cube.h"
+#include "utils.h"
 
 static void 	init_ptrs(t_data *data);
-static void 	init_allocs(t_map *map, t_data *data);
+static void 	init_allocs(t_data *data);
 static void 	init_vars(t_data *data);
 static t_bool	init_mlx(t_mlx_data *inf);
 
-void	init_data(t_map *map, t_data *data)
+/**
+ * @brief Centralize all initialization
+ * @param t_data
+ */
+void	init_data(t_data *data)
 {
 	init_ptrs(data);
-	init_allocs(map, data);
+	init_allocs(data);
 	init_vars(data);
-	load_map(data);
 }
 
 /**
@@ -20,16 +24,15 @@ void	init_data(t_map *map, t_data *data)
 static void init_ptrs(t_data *data)
 {	
 	data->inf = NULL;
-	data->map = NULL;
 }
 
 /**
  * @brief Allocate data pointers
  * @param t_map, t_data
  */
-static void init_allocs(t_map *map, t_data *data)
+static void init_allocs(t_data *data)
 {	
-	data->map = map;
+	
 	data->inf = malloc(sizeof(t_mlx_data));
 	if (!data->inf)
 		exit_free_with_msg("Allocation", data, 1);
@@ -47,6 +50,10 @@ static void init_vars(t_data *data)
 	(void)data;
 }
 
+/**
+ * @brief Initialize all the mlx informations
+ * @param t_mlx_data
+ */
 static t_bool	init_mlx(t_mlx_data *inf)
 {
 	inf->mlx = mlx_init();
@@ -68,6 +75,7 @@ static t_bool	init_mlx(t_mlx_data *inf)
 		mlx_destroy_display(inf->mlx), free(inf->mlx);
 		return (0);
 	}
-	inf->data = mlx_get_data_addr(inf->img, &inf->bpp, &inf->size_len, &inf->endian);
+	inf->data = mlx_get_data_addr \
+				(inf->img, &inf->bpp, &inf->size_len, &inf->endian);
 	return (1);
 }

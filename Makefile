@@ -1,32 +1,27 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: v <v@student.42.fr>                        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/24 18:12:50 by sminot            #+#    #+#              #
-#    Updated: 2025/03/25 21:30:40 by v                ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = cub3D
 
+SRC_DIR = src/
 SRC_FILE = main.c\
 
-SRC_DIR = src/
 PARSE_DIR = $(SRC_DIR)parse/
+PARSE = parse.c\
+		fill_map.c
+
 INIT_DIR = $(SRC_DIR)init/
+INIT = init.c
+
 RENDER_DIR = $(SRC_DIR)render/
-UTILS_DIR = $(SRC_DIR)utils/
-PROCESS_DIR = $(SRC_DIR)process/
-
-PARSE = parse.c
-INIT = init.c load.c
 RENDER = render_view.c
-UTILS = free_double_array.c error.c render_tools.c
-PROCESS = #init_data.c
 
+UTILS_DIR = $(SRC_DIR)utils/
+UTILS = free_double_array.c\
+		error.c\
+		render_tools.c\
+		exit.c liste_str.c\
+		vector.c
+
+PROCESS_DIR = $(SRC_DIR)process/
+PROCESS = #
 
 FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
 	$(addprefix $(INIT_DIR), $(INIT))\

@@ -1,21 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cube.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 17:35:44 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 15:04:28by vgarcia          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CUBE_H
 # define CUBE_H
 
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
-# include "utils.h"
 
 # include <math.h>
 # include <fcntl.h>
@@ -32,26 +19,32 @@ typedef enum e_bool
 	TRUE
 }	t_bool;
 
-typedef enum e_cardinal
+typedef enum e_direction
 {
-	NORTH,
-	SOUTH,
-	EAST,
+	NORTH ,
+	EAST ,
+	SOUTH ,
 	WEST
-}	t_cardinal;
+}	t_direction;
 
 typedef struct s_map
 {
-	unsigned long	x_max;
-	unsigned long	y_max;
-	char			**map;
+	size_t	x_max;
+	size_t	y_max;
+	int		**map;
 }	t_map;
 
-typedef	struct s_vec2d
+typedef	struct s_vi2d
 {
 	int x;
 	int y;
-}	t_vec2d;
+}	t_vi2d;
+
+typedef	struct s_vf2d
+{
+	float x;
+	float y;
+}	t_vf2d;
 
 typedef struct	s_mlx_inf
 {
@@ -67,26 +60,43 @@ typedef struct	s_mlx_inf
 typedef struct s_data
 {
 	t_map		*map;
-	t_cardinal	orientation;
-	t_vec2d		player_pos;
+	t_vf2d		player_pos;
+	t_direction	player_dir;
 	t_mlx_data	*inf;
 }	t_data;
 
 /*---------------------------------------------------------------------------*/
-/*                            parse.c                                        */
+/*                               lst_str.c                                   */
 /*---------------------------------------------------------------------------*/
+
+typedef struct s_lst_str
+{
+	char				*content;
+	struct s_lst_str	*next;
+}	t_lststr;
+
+/*---------------------------------------------------------------------------*/
+/*                                parse.c                                    */
+/*---------------------------------------------------------------------------*/
+
 typedef struct s_reading_map_status
 {
 	t_bool	map_start;
 	t_bool	map_is_end;
 	t_bool	param_start;
 	t_bool	param_is_end;
+	t_bool	map_is_valid;
 }	t_reading_map_status;
 
-void	parse_map(char *map_name, t_map *map);
+void	parse_map(char *map_name, t_data *data);
 
-void	init_data(t_map *map, t_data *data);
+/*---------------------------------------------------------------------------*/
+/*                              fill_map.c                                   */
+/*---------------------------------------------------------------------------*/
 
+void	creat_and_fill_map(t_lststr **lst_map, t_data *data);
+void	init_data(t_data *data);
 void	render_view(t_data *data);
+
 
 #endif

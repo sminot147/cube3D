@@ -1,36 +1,24 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 17:31:18 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 16:37:59 by vgarcia          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cube.h"
-/* 
+#include "utils.h"
+
 static void	check_arg(int ac, char **av);
 
 int	main(int ac, char **av)
 {
 	t_data	data;
-	t_map	*map;
 
 	(void)ac;
 	(void)av;
 	check_arg(ac, av);
-	map = ft_calloc(1, sizeof(t_map));
-	if (!map)
-		exit_with_msg("Allocation", EXIT_FAILURE);
-	parse_map(av[1], map);
-	init_data(map, &data);
+	data.map = ft_calloc(1, sizeof(t_map));
+	if (!data.map)
+		exit_with_msg("Allocation", 1);
+	parse_map(av[1], &data);
+	init_data(&data);
+	render_view(&data);
 	while (TRUE)
 	{
-		render_view(&data);
-		// process_input();
+		//process_input();
 	}
 	return (1);
 }
@@ -49,21 +37,22 @@ static void	check_arg(int ac, char **av)
 		exit_with_msg("Map is not a .cub", EXIT_FAILURE);
 	}
 }
-*/
 
-int	main(int ac, char **av)
-{
-	t_data	data;
-	t_map	*map;
 
-	(void)ac;
-	(void)av;
-	map = NULL;
-	init_data(map, &data);
-	render_view(&data);
-	while (TRUE)
-	{
-		// process_input();
-	}
-	return (1);
-}
+// int	main(int ac, char **av)
+// {
+// 	t_data	data;
+// 	t_map	*map;
+
+// 	// check_arg(ac, av);
+// 	init_map_and_data(&map, &data);
+// 	map = ft_calloc(1, sizeof(t_map));
+// 	if (!map)
+// 	{
+// 		// calc_everything();
+// 		render_view(&data);
+// 		// process_input();
+// 	}
+// 	data.map = map;
+// 	parse_map(av[1], &data);
+// }

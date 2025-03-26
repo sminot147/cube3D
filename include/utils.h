@@ -1,21 +1,22 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 18:34:07 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 22:00:32 by v                ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef UTILS_H
 # define UTILS_H
 
-typedef struct s_data		t_data;
-typedef struct s_mlx_inf	t_mlx_data;
-typedef	struct s_vec2d		t_vec2d;
+# include "cube.h"
+
+/*---------------------------------------------------------------------------*/
+/*                                exit.c                                     */
+/*---------------------------------------------------------------------------*/
+void	safe_exit(t_data *data);
+void	safe_exit_parse(t_data *data, t_lststr **lst_map, char *line, \
+						char *error_message);
+
+/*---------------------------------------------------------------------------*/
+/*                               lst_str.c                                   */
+/*---------------------------------------------------------------------------*/
+
+t_bool	add_content_lst(t_lststr **lst_str, char *new_content);
+void	clear_lst_str(t_lststr **lst_str);
+size_t	len_lst(t_lststr **lst_str);
 
 /*---------------------------------------------------------------------------*/
 /*                        free_double_array                                  */
@@ -23,21 +24,29 @@ typedef	struct s_vec2d		t_vec2d;
 
 void	free_double_array(void **array);
 
-
 /* ************************************************************************** */
 /*									ERROR									  */
 /* ************************************************************************** */
 
-void	exit_free_with_msg(char *comment, t_data *data, int code);
 void	exit_with_msg(char *comment, int code);
+void	exit_free_with_msg(char *comment, t_data *data, int code);
 
 /* ************************************************************************** */
 /*								RENDER_TOOLS								  */
 /* ************************************************************************** */
 
 void	set_pixel(t_mlx_data *inf, int x, int y, int color);
-void	draw_cube(t_mlx_data *inf, t_vec2d position, int tile_size, int color);
+void	draw2d_cube(t_mlx_data *inf, t_vi2d position, int tile_size, int color);
+void	draw2d_circle(t_mlx_data *inf, t_vf2d position, int diam, int color);
+void	draw2d_map(int ts, t_map *map, t_mlx_data *inf);
+void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts);
 
+/* ************************************************************************** */
+/*									VEC_TOOLS								  */
+/* ************************************************************************** */
 
-void	load_map(t_data *data);
+t_vi2d	sum_vec2d(t_vi2d position, t_vi2d to_sum);
+t_vi2d	sub_vec2d(t_vi2d position, t_vi2d to_sub);
+t_vi2d	mul_vec2d(t_vi2d position, t_vi2d to_mul);
+
 #endif
