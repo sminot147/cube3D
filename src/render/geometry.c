@@ -1,16 +1,34 @@
 #include "cube.h"
 #include "define.h"
 
+/**
+ * @brief Sets a pixel on the screen at the specified coordinates with a color.
+ * 
+ * @param inf Pointer to the t_mlx_data structure containing image data.
+ * @param x X-coordinate of the pixel.
+ * @param y Y-coordinate of the pixel.
+ * @param color Color of the pixel in hexadecimal format.
+ */
 void	set_pixel(t_mlx_data *inf, int x, int y, int color)
 {
 	char *dst;
 
 	if (x < 0 || x >= MINI_W || y < 0 || y >= MINI_H)
+	{
 		return;
+	}
 	dst = inf->data + (y * inf->size_len + x * (inf->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
+/**
+ * @brief Draws a line between two points with the specified color.
+ * 
+ * @param inf Pointer to the t_mlx_data structure containing image data.
+ * @param point1 Starting point of the line (t_vf2d structure).
+ * @param point2 Ending point of the line (t_vf2d structure).
+ * @param color Color of the line in hexadecimal format.
+ */
 void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color)
 {
     double    dx;
@@ -29,6 +47,14 @@ void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color)
     }
 }
 
+/**
+ * @brief Draws a filled square at the specified position
+ * 
+ * @param inf Pointer to the t_mlx_data structure containing image data.
+ * @param position Top-left corner of the square (t_vi2d structure).
+ * @param tile_size Size of the square's side in pixels.
+ * @param color Color of the square in hexadecimal format.
+ */
 void	draw_square(t_mlx_data *inf, t_vi2d position, int tile_size, int color)
 {
 	int	x_first;
@@ -51,6 +77,14 @@ void	draw_square(t_mlx_data *inf, t_vi2d position, int tile_size, int color)
 	}
 }
 
+/**
+ * @brief Draws a circle at the specified position
+ * 
+ * @param inf Pointer to the t_mlx_data structure containing image data.
+ * @param pos Center position of the circle (t_vf2d structure).
+ * @param diam Diameter of the circle in pixels.
+ * @param color Color of the circle in hexadecimal format.
+ */
 void	draw_circle(t_mlx_data *inf, t_vf2d pos, int diam, int color)
 {
 	float	x_first;

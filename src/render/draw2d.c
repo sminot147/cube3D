@@ -5,6 +5,13 @@
 static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map);
 static void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2);
 
+/**
+ * @brief Draws the 2D representation of the map.
+ * 
+ * @param ts Tile size in pixels.
+ * @param map Pointer to the map structure containing the grid and dimensions.
+ * @param inf Pointer to the MLX data structure for rendering.
+ */
 void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
 {
 	size_t	cur_x;
@@ -33,6 +40,14 @@ void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
 	draw2d_grid(inf, ts, map);
 }
 
+/**
+ * @brief Draws the 2D representation of the camera and player view.
+ * 
+ * @param map Pointer to the map structure.
+ * @param inf Pointer to the MLX data structure for rendering.
+ * @param data Pointer to the data structure
+ * @param ts Tile size in pixels.
+ */
 void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts)
 {
 	t_vf2d	angle_pos;
@@ -44,6 +59,13 @@ void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts)
 	// calc_view(inf, player_pos, ts, data); ?
 }
 
+/**
+ * @brief Draws the grid of the minimap.
+ * 
+ * @param inf Pointer to the MLX data structure for rendering.
+ * @param ts Tile size in pixels.
+ * @param map Pointer to the map structure containing the grid and dimensions.
+ */
 static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map)
 {
 	size_t	i;
@@ -64,6 +86,14 @@ static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map)
 	}
 }
 
+/**
+ * @brief Draws and convert a line between two points in 2D space.
+ * 
+ * @param inf Pointer to the MLX data structure for rendering.
+ * @param ts Tile size in pixels.
+ * @param point1 The starting point of the line in grid coordinates.
+ * @param point2 The ending point of the line in grid coordinates.
+ */
 static void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
 {
 	t_vf2d	convert1;

@@ -3,6 +3,10 @@
 
 static void	fill_img(t_data *data);
 
+/**
+ * @brief Clean and redraw the window
+ * @param data Pointer to the main data structure.
+ */
 void	render_view(t_data *data)
 {
 	t_mlx_data *inf;
@@ -13,6 +17,10 @@ void	render_view(t_data *data)
 	mlx_put_image_to_window(inf->mlx, inf->win, inf->img, 0, 0);
 }
 
+/**
+ * @brief Fills the image by rendering the 2D map and camera view.
+ * @param data Pointer to the main data structure.
+ */
 static void	fill_img(t_data *data)
 {
 	int	tile_size;
@@ -21,13 +29,3 @@ static void	fill_img(t_data *data)
 	draw2d_map(tile_size, data->map, data->mlx_inf);
 	draw2d_camera(data->map, data->mlx_inf, data, tile_size);
 }
-
-/*
-typedef    struct s_end_ray
-{
-    float    x;
-    float    y;
-    float    dist;
-}    t_end_ray;
-tracer point entre end_ray et player (soustraire end_ray par player) ou inverse
-*/

@@ -33,7 +33,9 @@ static void	free_data(t_data *data)
 		free(data->map);
 	}
 	if (data->mlx_inf)
+	{
 		free(data->mlx_inf);
+	}
 }
 
 static void close_mlx(t_mlx_data *info)

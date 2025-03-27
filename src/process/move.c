@@ -1,6 +1,13 @@
 #include "struct.h"
 #include <math.h>
 
+/**
+ * @brief Checks if a given position is inside a wall on the map.
+ * 
+ * @param pos The position to check, represented as a 2D vector (t_vf2d).
+ * @param map The 2D grid map where walls are represented by non-zero values.
+ * @return t_bool True if the position is inside a wall, False otherwise.
+ */
 static t_bool	is_in_wall(t_vf2d pos, int **map)
 {
 	t_bool	flag;
@@ -25,6 +32,12 @@ static t_bool	is_in_wall(t_vf2d pos, int **map)
 	return (flag);
 }
 
+/**
+ * @brief Calcul and moves the player if the new position is valid.
+ * 
+ * @param data data structure with player and map info.
+ * @param angle Angle offset from the player's view angle.
+ */
 void	try_move(t_data *data, float angle)
 {
 	t_vf2d	test_pos;

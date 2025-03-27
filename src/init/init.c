@@ -9,7 +9,7 @@ static t_bool	init_mlx(t_mlx_data *mlx_inf);
 
 /**
  * @brief Centralize all initialization
- * @param t_data
+ * @param t_data contains every informations of te program
  */
 void	init_data(t_data *data)
 {
@@ -20,7 +20,7 @@ void	init_data(t_data *data)
 
 /**
  * @brief Set all the pointers to NULL, to set up the free function
- * @param t_data
+ * @param t_data contains every informations of te program
  */
 static void init_ptrs(t_data *data)
 {	
@@ -29,20 +29,24 @@ static void init_ptrs(t_data *data)
 
 /**
  * @brief Allocate data pointers
- * @param t_data
+ * @param t_data contains every informations of te program
  */
 static void init_allocs(t_data *data)
 {	
 	data->mlx_inf = malloc(sizeof(t_mlx_data));
 	if (!data->mlx_inf)
+	{
 		exit_free_with_msg("Allocation", data, 1);
+	}
 	if (!init_mlx(data->mlx_inf))
+	{
 		exit_free_with_msg("Allocation", data, 1);
+	}
 }
 
 /**
  * @brief Set all the pointers to NULL, to set up the free function
- * @param t_data
+ * @param t_data contains every informations of te program
  */
 static void init_vars(t_data *data)
 {	
@@ -57,7 +61,7 @@ static void init_vars(t_data *data)
 
 /**
  * @brief Initialize all the mlx informations
- * @param t_mlx_data
+ * @param t_mlx_data contains every informations for the mlx library
  */
 static t_bool	init_mlx(t_mlx_data *mlx_inf)
 {
