@@ -15,6 +15,7 @@ RENDER = render_view.c\
 		draw2d.c\
 		geometry.c\
 		ray_casting.c\
+		ray_casting_vertical.c\
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\

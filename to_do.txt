@@ -5,10 +5,3 @@ map vide
 map que des param
 
 map que des lignes vides
-
-11111111
-10000001
-10000001
-10000001
-10000001
-11111111
