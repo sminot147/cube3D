@@ -41,4 +41,5 @@ static void close_mlx(t_mlx_data *info)
 	mlx_destroy_image(info->mlx, info->img);
 	mlx_destroy_window(info->mlx, info->win);
 	mlx_destroy_display(info->mlx);
+	free(info->mlx);
 }
