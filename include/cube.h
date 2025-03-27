@@ -4,6 +4,7 @@
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
 # include "struct.h"
+# include "math.h"
 
 # include <math.h>
 # include <fcntl.h>
