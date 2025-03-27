@@ -1,0 +1,7 @@
+Lignes vide apres la map. quand est-il ?
+
+map vide
+
+map que des param
+
+map que des lignes vides
