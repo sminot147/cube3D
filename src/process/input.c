@@ -28,13 +28,13 @@ static int	update_action(void *param)
 	if (wait_fps())
 		return (0);
 	if (data->key[NORTH])
-		try_move_front(data);
+		try_move(data, 0);
 	if (data->key[WEST])
-		try_move_left(data);
+		try_move(data, -M_PI * 0.5);
 	if (data->key[SOUTH])
-		try_move_back(data);
+		try_move(data, M_PI);
 	if (data->key[EAST])
-		try_move_right(data);
+		try_move(data, M_PI * 0.5);
 	render_view(data);	
 	return (0);
 }

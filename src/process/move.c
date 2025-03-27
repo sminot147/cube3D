@@ -1,4 +1,5 @@
 #include "struct.h"
+#include <math.h>
 
 static t_bool	is_in_wall(t_vf2d pos, int **map)
 {
@@ -24,58 +25,17 @@ static t_bool	is_in_wall(t_vf2d pos, int **map)
 	return (flag);
 }
 
-void	try_move_front(t_data *data)
+void	try_move(t_data *data, float angle)
 {
 	t_vf2d	test_pos;
 	t_map	*map;
 
 	map = data->map;
 	test_pos = data->player_pos;
-	test_pos.y -= 0.1;
+	test_pos.y += 0.1 * sin(data->view_angle + angle);
+	test_pos.x += 0.1 * cos(data->view_angle + angle);
 	if (!is_in_wall(test_pos, map->grid))
 	{
-		data->player_pos.y = test_pos.y;
-	}
-}
-
-void	try_move_left(t_data *data)
-{
-	t_vf2d	test_pos;
-	t_map	*map;
-
-	test_pos = data->player_pos;
-	test_pos.x -= 0.1;
-	map = data->map;
-	if (!is_in_wall(test_pos, map->grid))
-	{
-		data->player_pos.x = test_pos.x;
-	}
-}
-
-void	try_move_back(t_data *data)
-{
-	t_vf2d	test_pos;
-	t_map	*map;
-
-	map = data->map;
-	test_pos = data->player_pos;
-	test_pos.y += 0.1;
-	if (!is_in_wall(test_pos, map->grid))
-	{
-		data->player_pos.y = test_pos.y;
-	}
-}
-
-void	try_move_right(t_data *data)
-{
-	t_vf2d	test_pos;
-	t_map	*map;
-
-	map = data->map;
-	test_pos = data->player_pos;
-	test_pos.x += 0.1;
-	if (!is_in_wall(test_pos, map->grid))
-	{
-		data->player_pos.x = test_pos.x;
+		data->player_pos = test_pos;
 	}
 }
