@@ -36,7 +36,10 @@ static void	free_data(t_data *data)
 		free(data->mlx_inf);
 }
 
-static void close_mlx(t_mlx_data *inf)
+static void close_mlx(t_mlx_data *info)
 {
-	//close mlx
+	mlx_destroy_image(info->mlx, info->img);
+	mlx_destroy_window(info->mlx, info->win);
+	mlx_destroy_display(info->mlx);
+	free(info->mlx);
 }

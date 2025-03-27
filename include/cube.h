@@ -26,10 +26,7 @@ void	render_view(t_data *data);
 void	process_input(t_data *data);
 
 /*		MOVE		*/
-void	try_move_front(t_data *data);
-void	try_move_left(t_data *data);
-void	try_move_back(t_data *data);
-void	try_move_right(t_data *data);
+void	try_move(t_data *data, float angle);
 
 /*		MOUSE		*/
 int	mouse_move(int x, int y, void *param);
