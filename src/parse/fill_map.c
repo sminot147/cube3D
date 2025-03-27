@@ -27,16 +27,16 @@ static void	error_in_map(t_lststr **lst_map, t_data *data, char *line_error)
 
 static void	place_player(t_data *data, size_t x_pos, size_t y_pos, char c)
 {
-	data->player_pos.x = x_pos;
-	data->player_pos.y = y_pos;
+	data->player_pos.x = x_pos + 0.5;
+	data->player_pos.y = y_pos + 0.5;
 	if (c == 'N')
-		data->view_angle = 90;
+		data->view_angle = M_PI / 2;
 	else if (c == 'E')
 		data->view_angle = 0;
 	else if (c == 'S')
-		data->view_angle = 270;
+		data->view_angle = - M_PI / 2;
 	else if (c == 'W')
-		data->view_angle = 180;
+		data->view_angle = M_PI;
 }
 
 static void	fill_map(t_lststr **lst_map, t_data *data)

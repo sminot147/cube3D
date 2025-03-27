@@ -42,4 +42,7 @@ void	draw_square(t_mlx_data *inf, t_vi2d position, int tile_size, int color);
 void	draw_circle(t_mlx_data *inf, t_vf2d position, int diam, int color);
 void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color);
 
+
+t_end_ray	set_pos_to_end_ray(t_data *data);
+
 #endif

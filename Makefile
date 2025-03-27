@@ -13,7 +13,8 @@ INIT = init.c
 RENDER_DIR = $(SRC_DIR)render/
 RENDER = render_view.c\
 		draw2d.c\
-		geometry.c
+		geometry.c\
+		ray_casting.c\
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\

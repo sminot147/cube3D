@@ -24,6 +24,13 @@ typedef struct s_map
 	int		**grid;
 }	t_map;
 
+typedef struct s_end_ray
+{
+	float	x;
+	float	y;
+	float	dist;
+}	t_end_ray;
+
 typedef	struct s_vi2d
 {
 	int x;
