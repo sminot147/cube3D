@@ -30,9 +30,16 @@ typedef	struct s_vi2d
 
 typedef	struct s_vf2d
 {
-	float x;
-	float y;
+	float	x;
+	float	y;
 }	t_vf2d;
+
+typedef	struct s_end_ray
+{
+	float	x;
+	float	y;
+	float	dist;
+}	t_end_ray;
 
 typedef struct	s_mlx_inf
 {

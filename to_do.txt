@@ -5,3 +5,9 @@ map vide
 map que des param
 
 map que des lignes vides
+
+des 1 en bordure de map
+
+map solvable ?
+
+si une ligne d'espace apres la map...

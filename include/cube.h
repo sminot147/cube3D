@@ -4,6 +4,7 @@
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
 # include "struct.h"
+# include "math.h"
 
 # include <math.h>
 # include <fcntl.h>
@@ -14,7 +15,9 @@
 # define MINI_W 1920
 # define MINI_H 1080
 
-
+/*---------------------------------------------------------------------------*/
+/*                                parse.c                                    */
+/*---------------------------------------------------------------------------*/
 void	parse_map(char *map_name, t_data *data);
 
 /*---------------------------------------------------------------------------*/
