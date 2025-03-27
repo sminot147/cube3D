@@ -55,6 +55,7 @@ typedef struct	s_mlx_inf
 typedef struct s_data
 {
 	t_map		*map;
+	float		angle;
 	t_vf2d		player_pos;
 	t_direction	player_dir;
 	t_mlx_data	*inf;
