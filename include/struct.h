@@ -52,7 +52,7 @@ typedef struct s_data
 	int			tile_size;
 	int			key[4];
 	float		view_angle;
-	t_vi2d		mouse_pos;
+	t_vf2d		mouse_pos;
 	t_vf2d		player_pos;
 	t_map		*map;
 	t_mlx_data	*mlx_inf;
@@ -80,6 +80,5 @@ typedef struct s_reading_map_status
 	t_bool	param_is_end;
 	t_bool	map_is_valid;
 }	t_reading_map_status;
-
 
 #endif

@@ -8,13 +8,6 @@
 # include <math.h>
 # include <fcntl.h>
 
-# define WIN_X 1920
-# define WIN_Y 1080
-
-# define MINI_W 1920
-# define MINI_H 1080
-
-
 void	parse_map(char *map_name, t_data *data);
 
 /*---------------------------------------------------------------------------*/
@@ -50,6 +43,6 @@ void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts);
 void	set_pixel(t_mlx_data *inf, int x, int y, int color);
 void	draw_square(t_mlx_data *inf, t_vi2d position, int tile_size, int color);
 void	draw_circle(t_mlx_data *inf, t_vf2d position, int diam, int color);
-void    draw_line(t_mlx_data *inf, t_vi2d point1, t_vi2d point2);
+void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color);
 
 #endif

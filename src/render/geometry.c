@@ -1,4 +1,5 @@
 #include "cube.h"
+#include "define.h"
 
 void	set_pixel(t_mlx_data *inf, int x, int y, int color)
 {
@@ -10,7 +11,7 @@ void	set_pixel(t_mlx_data *inf, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void    draw_line(t_mlx_data *inf, t_vi2d point1, t_vi2d point2)
+void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color)
 {
     double    dx;
     double    dy;
@@ -23,7 +24,7 @@ void    draw_line(t_mlx_data *inf, t_vi2d point1, t_vi2d point2)
     dy /= len;
     while (len > 0)
     {
-        set_pixel(inf, point1.x += dx, point1.y += dy, 0);
+        set_pixel(inf, point1.x += dx, point1.y += dy, color);
         len--;
     }
 }
