@@ -25,7 +25,9 @@ UTILS = free_double_array.c\
 
 PROCESS_DIR = $(SRC_DIR)process/
 PROCESS = input.c\
-		move.c
+		move.c\
+		collision.c\
+		mouse.c
 
 FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
 	$(addprefix $(INIT_DIR), $(INIT))\

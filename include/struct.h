@@ -1,7 +1,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-#include "unistd.h"
+#include <unistd.h>
 
 typedef enum e_bool
 {
@@ -50,10 +50,12 @@ typedef struct	s_mlx_inf
 typedef struct s_data
 {
 	int			tile_size;
-	t_direction	player_dir;
+	int			key[4];
+	float		view_angle;
+	t_vi2d		mouse_pos;
 	t_vf2d		player_pos;
 	t_map		*map;
-	t_mlx_data	*inf;
+	t_mlx_data	*mlx_inf;
 }	t_data;
 
 /*---------------------------------------------------------------------------*/

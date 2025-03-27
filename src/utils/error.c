@@ -6,7 +6,7 @@ static void close_mlx(t_mlx_data *inf);
 
 void	exit_free_with_msg(char *comment, t_data *data, int code)
 {
-	close_mlx(data->inf);
+	close_mlx(data->mlx_inf);
 	free_data(data);
 	exit_with_msg(comment, code);
 }
@@ -32,8 +32,8 @@ static void	free_data(t_data *data)
 		}
 		free(data->map);
 	}
-	if (data->inf)
-		free(data->inf);
+	if (data->mlx_inf)
+		free(data->mlx_inf);
 }
 
 static void close_mlx(t_mlx_data *inf)

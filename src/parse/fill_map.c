@@ -30,13 +30,13 @@ static void	place_player(t_data *data, size_t x_pos, size_t y_pos, char c)
 	data->player_pos.x = x_pos;
 	data->player_pos.y = y_pos;
 	if (c == 'N')
-		data->player_dir = NORTH;
-	if (c == 'E')
-		data->player_dir = EAST;
-	if (c == 'S')
-		data->player_dir = SOUTH;
-	if (c == 'W')
-		data->player_dir = WEST;
+		data->view_angle = 90;
+	else if (c == 'E')
+		data->view_angle = 0;
+	else if (c == 'S')
+		data->view_angle = 270;
+	else if (c == 'W')
+		data->view_angle = 180;
 }
 
 static void	fill_map(t_lststr **lst_map, t_data *data)
@@ -96,7 +96,7 @@ char *direct(t_direction direction)
 
 void print_map(t_data *data) {
 	t_map *m = data->map;
-	ft_printf("player pos : x = %i et y = %i direction = %s\n", data->player_pos.x, data->player_pos.y, direct(data->player_dir));
+	// ft_printf("player pos : x = %i et y = %i direction = %s\n", data->player_pos.x, data->player_pos.y, direct(data->player_dir));
     ft_printf("Map dimensions: %i x %i\n", m->x_max, m->y_max);
     for (size_t i = 0; i <= m->y_max; i++) {
         for (size_t j = 0; j <= m->x_max; j++) {

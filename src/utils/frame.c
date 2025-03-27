@@ -3,6 +3,9 @@
 
 static time_t	get_time_ms(void);
 
+/**
+ * @brief Check if the elapsed time is over 20 milliseconds
+ */
 int	wait_fps(void)
 {
 	static time_t	last_frame_time;
