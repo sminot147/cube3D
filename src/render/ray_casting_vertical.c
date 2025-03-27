@@ -6,13 +6,12 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:43:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/27 19:43:01 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/27 20:05:04 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "cube.h"
-
 
 void	print_one_point(t_vf2d *point, char *message)
 {
@@ -44,7 +43,7 @@ t_bool	is_wall(t_vf2d *point, t_data *data, float angle)
 		return (TRUE);
 	if (is_int(point->x))
 	{
-		if (data->map->grid[(int)point->y][(int)point->x] == 1  || \
+		if (data->map->grid[(int)point->y][(int)point->x] == 1 || \
 			data->map->grid[(int)point->y][(int)point->x] == -1)
 			return (TRUE);
 		if (data->map->grid[(int)point->y][(int)point->x - 1] == 1 || \
@@ -58,7 +57,7 @@ t_bool	is_wall(t_vf2d *point, t_data *data, float angle)
 			return (TRUE);
 		if (data->map->grid[(int)point->y - 1][(int)point->x] == 1 || \
 			data->map->grid[(int)point->y - 1][(int)point->x] == -1)
-		return (TRUE);
+			return (TRUE);
 	}
 	return (FALSE);
 }
@@ -99,25 +98,12 @@ t_end_ray	end_ray_vertical(t_data *data, float angle)
 	t_vf2d		next_point;
 	t_end_ray	last_point;
 
-	if (- 0.001 < cos(angle) && cos(angle) < 0.001)
-	{
-		last_point.x = 0;
-		last_point.y = 0;
-		last_point.dist = sqrt((data->map->x_max + 1) * (data->map->x_max + 1) + \
-								(data->map->y_max + 1) * (data->map->y_max + 1));
-		return (last_point);
-	}
 	current_point = data->player_pos;
-	print_one_point(&current_point, "Init vertical : ");
-	int i = 0; //debug
-	while (set_next_point_vertical(&next_point, &current_point, data, angle) == FALSE && ++i <= 20)
+	while (set_next_point_vertical(&next_point, &current_point, data, angle) \
+						== FALSE)
 	{
 		current_point = next_point;
-		print_one_point(&next_point, "step vertical : ");
 	}
-	print_one_point(&next_point, "Fin vertical : ");
-	if (i > 19)
-		printf("C'est normal ???????????????????????????????????????????????????????????????????????????????????");
 	last_point.x = next_point.x;
 	last_point.y = next_point.y;
 	last_point.dist = calc_dist(next_point, data->player_pos);
