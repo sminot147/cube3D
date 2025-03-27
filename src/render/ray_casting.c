@@ -6,31 +6,33 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:31:06 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/27 18:02:40 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/27 19:42:02 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "cube.h"
+#include "define.h"
 
+void	print_one_point(t_vf2d *point, char *message); /////////////////////////////////////sup
 
-
-static t_bool	set_next_point_horizontal(t_vf2d *next_point, t_vf2d *current_pos, t_data *data)
+static t_bool	set_next_point_horizontal(t_vf2d *next_point, \
+							t_vf2d *current_pos, t_data *data, float angle)
 {
 	float	delta_y;
 
-	if (-0.1 < cos(data->view_angle) && cos(data->view_angle) < 0.1)
+	if (-0.001 < cos(angle) && cos(angle) < 0.001)
 	{
 		next_point->x = current_pos->x;
-		if (sin(data->view_angle) > 0 && is_int(current_pos->y))
+		if (sin(angle) > 0 && is_int(current_pos->y))
 			next_point->y = current_pos->y - 1;
-		else if (sin(data->view_angle) > 0)
+		else if (sin(angle) > 0)
 			next_point->y = (float)(int)current_pos->y;
 		else
 			next_point->y = (float)(int)current_pos->y + 1;
-		return (is_wall(next_point, data));
+		return (is_wall(next_point, data, angle));
 	}
-	if (data->view_angle < M_PI)
+	if (angle < M_PI)
 	{
 		if (is_int(current_pos->y))
 			next_point->y = next_point->y - 1;
@@ -40,29 +42,33 @@ static t_bool	set_next_point_horizontal(t_vf2d *next_point, t_vf2d *current_pos,
 	else
 		next_point->y = (float)(int)current_pos->y + 1;
 	delta_y = current_pos->y - next_point->y;
-	next_point->x = current_pos->x + delta_y / tan(data->view_angle);
-	return (is_wall(next_point, data));
+	next_point->x = current_pos->x + delta_y / tan(angle);
+	return (is_wall(next_point, data, angle));
 }
 
-t_end_ray	end_ray_horizontal(t_data *data)
+t_end_ray	end_ray_horizontal(t_data *data, float angle)
 {
 	t_vf2d		current_point;
 	t_vf2d		next_point;
 	t_end_ray	last_point;
 
-	if (- 0.1 < sin(data->view_angle) && sin(data->view_angle) < 0.1)
+	if (- 0.001 < sin(angle) && sin(angle) < 0.001)
 	{
 		last_point.x = 0;
 		last_point.y = 0;
-		last_point.dist = 1000;
+		last_point.dist = sqrt((data->map->x_max + 1) * (data->map->x_max + 1) + \
+								(data->map->y_max + 1) * (data->map->y_max + 1));
 		return (last_point);
 	}
 	current_point = data->player_pos;
 	int i = 0; //debug
-	while (set_next_point_horizontal(&next_point, &current_point, data) == FALSE && ++i <= 20)
+	print_one_point(&current_point, "Init horizontal : ");
+	while (set_next_point_horizontal(&next_point, &current_point, data, angle) == FALSE && ++i <= 20)
 	{
 		current_point = next_point;
+		print_one_point(&next_point, "step horizontal : ");
 	}
+	print_one_point(&next_point, "Fin horizontal : ");
 	if (i > 19)
 		printf("C'est normal ???????????????????????????????????????????????????????????????????????????????????");
 	last_point.x = next_point.x;
@@ -71,72 +77,91 @@ t_end_ray	end_ray_horizontal(t_data *data)
 	return (last_point);
 }
 
-t_end_ray	set_pos_to_end_ray(t_data *data)
+static t_end_ray	end_ray(t_data *data, float angle)
 {
 	
 	t_end_ray	end_ray_h;
 	t_end_ray	end_ray_v;
 	
 
-	end_ray_h = end_ray_horizontal(data);
-	end_ray_v = end_ray_vertical(data);
-	return (end_ray_v);
-	// if (end_ray_h.dist < end_ray_v.dist)
-	// 	return (end_ray_h);
-	// return(end_ray_v);
+	end_ray_h = end_ray_horizontal(data, angle);
+	end_ray_v = end_ray_vertical(data, angle);
+	if (end_ray_h.dist < end_ray_v.dist)
+ 		return (end_ray_h);
+	return(end_ray_v);
 }
 
-// static void	check_max_range_vertical(t_vf2d *next_point, t_vf2d current_pos, \
-// 									t_data *data, t_bool is_almost_vertical)
-// {
-// 	if (is_almost_vertical == TRUE)
-// 	{
-// 		if (data->angle < M_PI)
-// 		{
-// 			next_point.x == data->player_pos.x;
-// 			next_point.x == 1;
-// 		}
-// 	}
-// 	else
-// 	{
+/*----------------------------------------------------------------------------------------------*/
+void	draw2d_line1(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
+{
+	t_vf2d	convert1;
+	t_vf2d	convert2;
 
-// 	}
-// }
+	convert1.x = point1.x * ts;
+	convert1.y = point1.y * ts;
+	convert2.x = point2.x * ts;
+	convert2.y = point2.y * ts;
+	draw_line(inf, convert1, convert2, GREEN);
+}
 
-// static void	set_next_point_vertical(t_vf2d *next_point, t_vf2d current_pos, \
-// 									float angle, t_map *map)
-// {
-// 	float	delta_x;
+void	draw2d_line2(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
+{
+	t_vf2d	convert1;
+	t_vf2d	convert2;
 
-// 	if ((M_PI / 2 - 0.1 < angle && M_PI / 2 + 0.1) || \
-// 		(3 * M_PI / 2 - 0.1 < angle && angle < 3 * M_PI / 2 + 0.1))
-// 		check_max_range_vertical(next_point, pos_player, data, TRUE);
-// 	else if ((M_PI) / 2 < angle && angle < (3 * M_PI / 2))
-// 	{
-// 		next_point.x = (float)(int)pos_player.x;
-// 		delta_x = pos_player.x - next_point.x;
-// 	}
-// 	else
-// 	{
-// 		next_point.x = (float)(int)pos_player.x + 1;
-// 		delta_x = next_point.x - pos_player.x;
-// 	}
-// 	next_point.y = pos_player + delta_x * tan(angle);
-// }
+	convert1.x = point1.x * ts;
+	convert1.y = point1.y * ts;
+	convert2.x = point2.x * ts;
+	convert2.y = point2.y * ts;
+	draw_line(inf, convert1, convert2, YELLOW);
+}
 
-// t_end_ray	set_pos_to_end_ray_vertical(t_vf2d pos_player, float angle, t_data data)
-// {
-// 	t_vf2d		next_point;
-// 	t_end_ray	last_point;
+void	draw2d_line3(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
+{
+	t_vf2d	convert1;
+	t_vf2d	convert2;
 
-// 	set_first_point(&next_point, pos_player, angle, data);
-// 	while (is_wall(next_point, map) == FALSE)
-// 	{
-// 		next_point.y += 1 * tan(angle);
-// 		next_point.x + 1;
-// 	}
-// 	last_point.x = next_point.x;
-// 	last_point.y = next_point.y;
-// 	last_point.dist = calc_dist(next_point, pos_player);
-// 	return (last_point);
-// }
+	convert1.x = point1.x * ts;
+	convert1.y = point1.y * ts;
+	convert2.x = point2.x * ts;
+	convert2.y = point2.y * ts;
+	draw_line(inf, convert1, convert2, BLACK);
+}
+
+void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
+{
+	int			i;
+	t_end_ray	end_ray1;
+	t_vf2d		end_ray2;
+	float		angle;;
+	
+	i = - FIELD_OF_VIEW / 2;
+	while (++i < FIELD_OF_VIEW / 2)
+	{
+		angle = data->view_angle + (i * M_PI / 180);
+		printf("On a angle = %f\n", angle * 180 / M_PI);
+		end_ray1 = end_ray(data, angle);
+		end_ray2.x = end_ray1.x;
+		end_ray2.y = end_ray1.y;
+		draw2d_line(inf, ts, end_ray2, data->player_pos);
+	}
+
+
+// angle = data->view_angle;
+// end_ray1 = end_ray_vertical(data, angle);
+// end_ray2.x = end_ray1.x;
+// end_ray2.y = end_ray1.y;
+// print_one_point(&end_ray2, "Veritacal Yellow : ");
+// draw2d_line2(inf, ts, end_ray2, data->player_pos);
+// printf("On a dist = %f\n", end_ray1.dist);
+// end_ray1 = end_ray_horizontal(data, angle);
+// end_ray2.x = end_ray1.x;
+// end_ray2.y = end_ray1.y;
+// draw2d_line1(inf, ts, end_ray2, data->player_pos);
+// print_one_point(&end_ray2, "Horizontal GREEN : ");
+// end_ray1 = end_ray(data, angle);
+// end_ray2.x = end_ray1.x;
+// end_ray2.y = end_ray1.y;
+// draw2d_line3(inf, ts, end_ray2, data->player_pos);
+// print_one_point(&end_ray2, "End BLACK : ");
+}

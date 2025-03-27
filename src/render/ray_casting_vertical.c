@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:43:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/27 18:04:22 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/27 19:43:01 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ t_bool	is_int(float nb)
 	float	diff;
 
 	diff = (float)(int)nb - nb;
-	if (-0.001 < diff && diff < 0.001)
+	if (-0.000001 < diff && diff < 0.000001)
 		return (TRUE);
 	return (FALSE);
 }
 
-t_bool	is_wall(t_vf2d *point, t_data *data)
+t_bool	is_wall(t_vf2d *point, t_data *data, float angle)
 {
 	if ((point->x <= 0 || point->y <= 0 || point->x >= data->map->x_max || \
 			point->y >= data->map->y_max))
@@ -47,8 +47,8 @@ t_bool	is_wall(t_vf2d *point, t_data *data)
 		if (data->map->grid[(int)point->y][(int)point->x] == 1  || \
 			data->map->grid[(int)point->y][(int)point->x] == -1)
 			return (TRUE);
-		if (data->map->grid[(int)point->y][(int)point->x + 1] == 1 || \
-			data->map->grid[(int)point->y][(int)point->x + 1] == -1)
+		if (data->map->grid[(int)point->y][(int)point->x - 1] == 1 || \
+			data->map->grid[(int)point->y][(int)point->x - 1] == -1)
 			return (TRUE);
 	}
 	else if (is_int(point->y))
@@ -63,25 +63,23 @@ t_bool	is_wall(t_vf2d *point, t_data *data)
 	return (FALSE);
 }
 
-static t_bool	set_next_point_horizontal(t_vf2d *next_point, t_vf2d *current_pos, t_data *data)
+static t_bool	set_next_point_vertical(t_vf2d *next_point, \
+							t_vf2d *current_pos, t_data *data, float angle)
 {
 	float	delta_x;
 
-	print_one_point(current_pos, "Current_pos :");
-
-	if (-0.1 < sin(data->view_angle) && sin(data->view_angle) < 0.1)
+	if (-0.001 < sin(angle) && sin(angle) < 0.001)
 	{
 		next_point->y = current_pos->y;
-		if (cos(data->view_angle) > 0 && is_int(current_pos->y))
-			next_point->x = current_pos->x - 1;
-		else if (cos(data->view_angle) > 0)
-			next_point->x = (float)(int)current_pos->x;
-		else
+		if (cos(angle) > 0)
 			next_point->x = (float)(int)current_pos->x + 1;
-		print_one_point(next_point, "Next_pos droit :");
-		return (is_wall(next_point, data));
+		else if (is_int(current_pos->y))
+			next_point->x = current_pos->x - 1;
+		else
+			next_point->x = (float)(int)current_pos->x;
+		return (is_wall(next_point, data, angle));
 	}
-	if (cos(data->view_angle) > 0)
+	if (cos(angle) < 0)
 	{
 		if (is_int(current_pos->x))
 			next_point->x = next_point->x - 1;
@@ -91,30 +89,33 @@ static t_bool	set_next_point_horizontal(t_vf2d *next_point, t_vf2d *current_pos,
 	else
 		next_point->x = (float)(int)current_pos->x + 1;
 	delta_x = current_pos->x - next_point->x;
-	next_point->y = current_pos->y + delta_x * tan(data->view_angle);
-	print_one_point(next_point, "Next_pos :");
-	return (is_wall(next_point, data));
+	next_point->y = current_pos->y + delta_x * tan(angle);
+	return (is_wall(next_point, data, angle));
 }
 
-t_end_ray	end_ray_vertical(t_data *data)
+t_end_ray	end_ray_vertical(t_data *data, float angle)
 {
 	t_vf2d		current_point;
 	t_vf2d		next_point;
 	t_end_ray	last_point;
 
-	if (- 0.1 < cos(data->view_angle) && cos(data->view_angle) < 0.1)
+	if (- 0.001 < cos(angle) && cos(angle) < 0.001)
 	{
 		last_point.x = 0;
 		last_point.y = 0;
-		last_point.dist = 1000;
+		last_point.dist = sqrt((data->map->x_max + 1) * (data->map->x_max + 1) + \
+								(data->map->y_max + 1) * (data->map->y_max + 1));
 		return (last_point);
 	}
 	current_point = data->player_pos;
+	print_one_point(&current_point, "Init vertical : ");
 	int i = 0; //debug
-	while (set_next_point_horizontal(&next_point, &current_point, data) == FALSE && ++i <= 20)
+	while (set_next_point_vertical(&next_point, &current_point, data, angle) == FALSE && ++i <= 20)
 	{
 		current_point = next_point;
+		print_one_point(&next_point, "step vertical : ");
 	}
+	print_one_point(&next_point, "Fin vertical : ");
 	if (i > 19)
 		printf("C'est normal ???????????????????????????????????????????????????????????????????????????????????");
 	last_point.x = next_point.x;

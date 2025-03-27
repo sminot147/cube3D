@@ -66,14 +66,14 @@ static t_bool	init_mlx(t_mlx_data *mlx_inf)
 	{
 		return (0);
 	}
-	mlx_inf->win = mlx_new_window(mlx_inf->mlx, 1920, 1080, "test");
+	mlx_inf->win = mlx_new_window(mlx_inf->mlx, WIDTH, HEIGHT, "cub3D");
 	if (mlx_inf->win == NULL)
 	{
 		mlx_destroy_display(mlx_inf->mlx);
 		free(mlx_inf->mlx);
 		return (0);
 	}
-	mlx_inf->img = mlx_new_image(mlx_inf->mlx, 1920, 1080);
+	mlx_inf->img = mlx_new_image(mlx_inf->mlx, WIDTH, HEIGHT);
 	if (mlx_inf->img == NULL)
 	{
 		mlx_destroy_window(mlx_inf->mlx, mlx_inf->win);

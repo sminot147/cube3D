@@ -3,7 +3,6 @@
 #include "define.h"
 
 static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map);
-static void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2);
 
 void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
 {
@@ -36,17 +35,13 @@ void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
 void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts)
 {
 	t_vf2d	angle_pos;
-	t_end_ray	end_ray;
-	t_vf2d		end_ray2;
+
 
 	angle_pos.x = data->player_pos.x + 1 * cos(data->view_angle);
 	angle_pos.y = data->player_pos.y + 1 * sin(data->view_angle);
 	draw2d_line(inf, ts, angle_pos, data->player_pos);
 	draw_circle(inf, data->player_pos, ts, GREEN);
-	end_ray = set_pos_to_end_ray(data);
-	end_ray2.x = end_ray.x;
-	end_ray2.y = end_ray.y;
-	draw2d_line(inf, ts, end_ray2, data->player_pos);
+	trace_ray_casting(data, inf, ts);
 	// calc_view(inf, player_pos, ts, data); ?
 }
 
@@ -70,7 +65,7 @@ static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map)
 	}
 }
 
-static void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
+void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
 {
 	t_vf2d	convert1;
 	t_vf2d	convert2;
