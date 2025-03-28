@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:43:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/27 20:05:04 by sminot           ###   ########.fr       */
+/*   Updated: 2025/03/28 13:15:59 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_bool	is_int(float nb)
 	float	diff;
 
 	diff = (float)(int)nb - nb;
-	if (-0.000001 < diff && diff < 0.000001)
+	if (-0.0001 < diff && diff < 0.0001)
 		return (TRUE);
 	return (FALSE);
 }
@@ -72,7 +72,7 @@ static t_bool	set_next_point_vertical(t_vf2d *next_point, \
 		next_point->y = current_pos->y;
 		if (cos(angle) > 0)
 			next_point->x = (float)(int)current_pos->x + 1;
-		else if (is_int(current_pos->y))
+		else if (is_int(current_pos->x))
 			next_point->x = current_pos->x - 1;
 		else
 			next_point->x = (float)(int)current_pos->x;
@@ -99,6 +99,7 @@ t_end_ray	end_ray_vertical(t_data *data, float angle)
 	t_end_ray	last_point;
 
 	current_point = data->player_pos;
+	static int i;
 	while (set_next_point_vertical(&next_point, &current_point, data, angle) \
 						== FALSE)
 	{
