@@ -4,6 +4,14 @@ map.cub
 
 /obj
 
+mlx/obj
+
+mlx/test
+
+mlx/libmlx_Linux.a
+
+mlx/libmlx.a
+
 .obj
 
 cub3D
