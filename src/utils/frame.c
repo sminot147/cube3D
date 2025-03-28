@@ -12,7 +12,7 @@ int	wait_fps(void)
 	time_t			current_time;
 
 	current_time = get_time_ms();
-	if (current_time - last_frame_time < 20)
+	if (current_time - last_frame_time < 30)
 	{
 		return (1);
 	}

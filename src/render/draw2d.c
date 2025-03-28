@@ -3,7 +3,6 @@
 #include "define.h"
 
 static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map);
-static void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2);
 
 /**
  * @brief Draws the 2D representation of the map.
@@ -52,11 +51,11 @@ void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts)
 {
 	t_vf2d	angle_pos;
 
-	angle_pos.x = data->player_pos.x + 1 * cos(data->view_angle);
-	angle_pos.y = data->player_pos.y + 1 * sin(data->view_angle);
+	angle_pos.x = data->player_pos.x - 1 * cos(data->view_angle);
+	angle_pos.y = data->player_pos.y - 1 * sin(data->view_angle);
 	draw2d_line(inf, ts, angle_pos, data->player_pos);
 	draw_circle(inf, data->player_pos, ts, GREEN);
-	// calc_view(inf, player_pos, ts, data); ?
+	trace_ray_casting(data, inf, ts);
 }
 
 /**
@@ -94,7 +93,7 @@ static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map)
  * @param point1 The starting point of the line in grid coordinates.
  * @param point2 The ending point of the line in grid coordinates.
  */
-static void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
+void	draw2d_line(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
 {
 	t_vf2d	convert1;
 	t_vf2d	convert2;

@@ -12,11 +12,10 @@
 # define YELLOW 0xFFFF00
 # define BLACK 0x000000
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 720
 
-# define MINI_W 1920
-# define MINI_H 1080
+# define FIELD_OF_VIEW 60
 
 # define RADIANT_MAX M_PI*2
 

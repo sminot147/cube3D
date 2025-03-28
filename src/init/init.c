@@ -49,8 +49,9 @@ static void init_allocs(t_data *data)
  * @param t_data contains every informations of te program
  */
 static void init_vars(t_data *data)
-{	
-	data->tile_size = MINI_W / (data->map->x_max + 1);
+{
+	data->minimap_size = WIDTH / 8;
+	data->tile_size = data->minimap_size / (data->map->x_max + 1);
 	data->mouse_pos.x = WIDTH * 0.5;
 	data->mouse_pos.y = HEIGHT * 0.5;
 	data->key[NORTH] = 0;
@@ -70,14 +71,14 @@ static t_bool	init_mlx(t_mlx_data *mlx_inf)
 	{
 		return (0);
 	}
-	mlx_inf->win = mlx_new_window(mlx_inf->mlx, 1920, 1080, "test");
+	mlx_inf->win = mlx_new_window(mlx_inf->mlx, WIDTH, HEIGHT, "cub3D");
 	if (mlx_inf->win == NULL)
 	{
 		mlx_destroy_display(mlx_inf->mlx);
 		free(mlx_inf->mlx);
 		return (0);
 	}
-	mlx_inf->img = mlx_new_image(mlx_inf->mlx, 1920, 1080);
+	mlx_inf->img = mlx_new_image(mlx_inf->mlx, WIDTH, HEIGHT);
 	if (mlx_inf->img == NULL)
 	{
 		mlx_destroy_window(mlx_inf->mlx, mlx_inf->win);

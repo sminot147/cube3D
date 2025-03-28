@@ -13,7 +13,7 @@ void	set_pixel(t_mlx_data *inf, int x, int y, int color)
 {
 	char *dst;
 
-	if (x < 0 || x >= MINI_W || y < 0 || y >= MINI_H)
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 	{
 		return;
 	}

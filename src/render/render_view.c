@@ -1,5 +1,6 @@
 #include "cube.h"
 #include "utils.h"
+#include "define.h"
 
 static void	fill_img(t_data *data);
 
@@ -12,7 +13,7 @@ void	render_view(t_data *data)
 	t_mlx_data *inf;
 
 	inf = data->mlx_inf;
-	ft_bzero(inf->data, inf->size_len * inf->bpp);
+	ft_bzero(inf->data, inf->size_len * HEIGHT);
 	fill_img(data);
 	mlx_put_image_to_window(inf->mlx, inf->win, inf->img, 0, 0);
 }

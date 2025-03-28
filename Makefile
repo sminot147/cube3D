@@ -13,7 +13,9 @@ INIT = init.c
 RENDER_DIR = $(SRC_DIR)render/
 RENDER = render_view.c\
 		draw2d.c\
-		geometry.c
+		geometry.c\
+		ray_casting.c\
+		ray_casting_vertical.c\
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\
@@ -26,7 +28,6 @@ UTILS = free_double_array.c\
 PROCESS_DIR = $(SRC_DIR)process/
 PROCESS = input.c\
 		move.c\
-		collision.c\
 		mouse.c
 
 FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\

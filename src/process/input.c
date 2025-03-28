@@ -37,25 +37,16 @@ static int	update_action(void *param)
 
 	data = (t_data *)param;
 	if (wait_fps())
-	{
 		return (0);
-	}
 	if (data->key[NORTH])
-	{
 		try_move(data, 0);
-	}
 	if (data->key[WEST])
-	{
 		try_move(data, -M_PI * 0.5);
-	}
 	if (data->key[SOUTH])
-	{
 		try_move(data, M_PI);
-	}
 	if (data->key[EAST])
-	{
 		try_move(data, M_PI * 0.5);
-	}
+	data->tile_size = data->minimap_size / (data->map->x_max + 1);
 	render_view(data);
 	return (0);
 }
@@ -75,21 +66,15 @@ static int	key_press(int keycode, void *param)
 
 	data = (t_data *)param;
 	if (keycode == XK_w)
-	{
 		data->key[NORTH] = 1;
-	}
 	else if (keycode == XK_a)
-	{
 		data->key[WEST] = 1;
-	}
 	else if (keycode == XK_s)
-	{
 		data->key[SOUTH] = 1;
-	}
 	else if (keycode == XK_d)
-	{
 		data->key[EAST] = 1;
-	}
+	else if (keycode == XK_space)
+		data->minimap_size = WIDTH;
 	return (0);
 }
 
@@ -106,25 +91,17 @@ static int	key_release(int keycode, void *param)
 
 	data = (t_data *)param;
 	if (keycode == XK_Escape)
-	{
 		close_program(data);
-	}
 	else if (keycode == XK_w)
-	{
 		data->key[NORTH] = 0;
-	}
 	else if (keycode == XK_a)
-	{
 		data->key[WEST] = 0;
-	}
 	else if (keycode == XK_s)
-	{
 		data->key[SOUTH] = 0;
-	}
 	else if (keycode == XK_d)
-	{
 		data->key[EAST] = 0;
-	}
+	else if (keycode == XK_space)
+		data->minimap_size = WIDTH / 6;
 	return (0);
 }
 

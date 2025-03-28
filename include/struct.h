@@ -24,6 +24,13 @@ typedef struct s_map
 	int		**grid;
 }	t_map;
 
+typedef struct s_end_ray
+{
+	float	x;
+	float	y;
+	float	dist;
+}	t_end_ray;
+
 typedef	struct s_vi2d
 {
 	int x;
@@ -52,6 +59,7 @@ typedef struct s_data
 	int			tile_size;
 	int			key[4];
 	float		view_angle;
+	int			minimap_size;
 	t_vf2d		mouse_pos;
 	t_vf2d		player_pos;
 	t_map		*map;
