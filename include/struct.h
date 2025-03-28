@@ -19,6 +19,8 @@ typedef enum e_direction
 
 typedef struct s_map
 {
+	int ceiling_color;
+	int floor_color;
 	size_t	x_max;
 	size_t	y_max;
 	int		**grid;

@@ -45,8 +45,8 @@ void	try_move(t_data *data, float angle)
 
 	map = data->map;
 	test_pos = data->player_pos;
-	test_pos.y += 0.1 * sin(data->view_angle + angle);
-	test_pos.x += 0.1 * cos(data->view_angle + angle);
+	test_pos.y += 0.1 * cos(data->view_angle + angle);
+	test_pos.x += 0.1 * sin(data->view_angle + angle);
 	if (!is_in_wall(test_pos, map->grid))
 	{
 		data->player_pos = test_pos;

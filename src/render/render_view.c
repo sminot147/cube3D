@@ -27,6 +27,8 @@ static void	fill_img(t_data *data)
 	int	tile_size;
 
 	tile_size = data->tile_size;
+	render_surface(HEIGHT * 0.5, data);
+	trace_ray_casting(data, data->mlx_inf, data->tile_size);
 	draw2d_map(tile_size, data->map, data->mlx_inf);
 	draw2d_camera(data->map, data->mlx_inf, data, tile_size);
 }

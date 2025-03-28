@@ -15,7 +15,7 @@ void	set_pixel(t_mlx_data *inf, int x, int y, int color)
 
 	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 	{
-		return;
+		return ;
 	}
 	dst = inf->data + (y * inf->size_len + x * (inf->bpp / 8));
 	*(unsigned int *)dst = color;
@@ -31,18 +31,22 @@ void	set_pixel(t_mlx_data *inf, int x, int y, int color)
  */
 void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color)
 {
-    double    dx;
-    double    dy;
-    float    len;
+    float    dx;
+    float    dy;
+    int    len;
 
     dx = point2.x - point1.x;
     dy = point2.y - point1.y;
     len = sqrtf(dx * dx + dy * dy);
     dx /= len;
     dy /= len;
+	if (len > (WIDTH + HEIGHT))
+		len = WIDTH + HEIGHT;
     while (len > 0)
     {
-        set_pixel(inf, point1.x += dx, point1.y += dy, color);
+		point1.x += dx;
+		point1.y += dy;
+        set_pixel(inf, point1.x, point1.y, color);
         len--;
     }
 }
@@ -111,4 +115,27 @@ void	draw_circle(t_mlx_data *inf, t_vf2d pos, int diam, int color)
 		}
 		++y_added;
 	}
+}
+
+void	set_pixels(t_mlx_data *inf, int c, size_t n)
+{
+	size_t	i;
+	int		x;
+	int		y;
+	char	*dst;
+
+	i = 0;
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			dst = inf->data + (y * inf->size_len + x * (inf->bpp / 8));
+			*(unsigned int *)dst = c;
+			++x;
+		}
+		++y;
+	}
+
 }

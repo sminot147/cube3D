@@ -6,11 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:31:06 by sminot            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/28 13:32:31 by vgarcia          ###   ########.fr       */
-=======
-/*   Updated: 2025/03/28 13:20:59 by sminot           ###   ########.fr       */
->>>>>>> origin
+/*   Updated: 2025/03/28 14:45:10 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +93,7 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 		angle = data->view_angle + (i * M_PI / 180);
 		end_ray1 = end_ray(data, angle);
 		//
-		// render_ray3d();
+		render_ray3d(i, &end_ray1, data);
 		//
 		end_ray2.x = end_ray1.x;
 		end_ray2.y = end_ray1.y;

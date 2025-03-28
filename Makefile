@@ -10,12 +10,16 @@ PARSE = parse.c\
 INIT_DIR = $(SRC_DIR)init/
 INIT = init.c
 
+
 RENDER_DIR = $(SRC_DIR)render/
 RENDER = render_view.c\
 		draw2d.c\
 		geometry.c\
 		ray_casting.c\
 		ray_casting_vertical.c\
+
+PSEUDO_DIR = $(RENDER_DIR)pseudo3d/
+PSEUDO = render3d.c
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\
@@ -34,6 +38,7 @@ FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
 	$(addprefix $(INIT_DIR), $(INIT))\
 	$(addprefix $(PARSE_DIR), $(PARSE))\
 	$(addprefix $(RENDER_DIR), $(RENDER))\
+	$(addprefix $(PSEUDO_DIR), $(PSEUDO))\
 	$(addprefix $(PROCESS_DIR), $(PROCESS))\
 	$(addprefix $(UTILS_DIR), $(UTILS))
 
