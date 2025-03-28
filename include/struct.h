@@ -26,9 +26,10 @@ typedef struct s_map
 
 typedef struct s_end_ray
 {
-	float	x;
-	float	y;
-	float	dist;
+	float		x;
+	float		y;
+	float		dist;
+	t_direction	wall;
 }	t_end_ray;
 
 typedef	struct s_vi2d

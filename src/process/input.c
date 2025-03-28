@@ -41,11 +41,11 @@ static int	update_action(void *param)
 	if (data->key[NORTH])
 		try_move(data, 0);
 	if (data->key[WEST])
-		try_move(data, -M_PI * 0.5);
+		try_move(data, M_PI * 0.5);
 	if (data->key[SOUTH])
 		try_move(data, M_PI);
 	if (data->key[EAST])
-		try_move(data, M_PI * 0.5);
+		try_move(data, -M_PI * 0.5);
 	data->tile_size = data->minimap_size / (data->map->x_max + 1);
 	render_view(data);
 	return (0);

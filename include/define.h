@@ -15,7 +15,7 @@
 # define WIDTH 1280
 # define HEIGHT 720
 
-# define FIELD_OF_VIEW 60
+# define FIELD_OF_VIEW 1
 
 # define RADIANT_MAX M_PI*2
 

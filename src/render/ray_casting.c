@@ -5,6 +5,33 @@
 
 void	print_one_point(t_vf2d *point, char *message); /*-------------------------------------------*/ //sup
 
+t_end_ray	set_wall(t_end_ray point, t_data *data)
+{
+	if ((point.x <= 0 || point.y <= 0 || point.x >= data->map->x_max || \
+			point.y >= data->map->y_max))
+		printf("Sure about it ??????????????\n"); //normalement on est jamais la;
+	if (is_int(point.x))
+	{
+		if (data->map->grid[(int)point.y][(int)point.x] == 1 || \
+			data->map->grid[(int)point.y][(int)point.x] == -1)
+			printf("EAST\n");point.wall = EAST;
+		if (data->map->grid[(int)point.y][(int)point.x - 1] == 1 || \
+			data->map->grid[(int)point.y][(int)point.x - 1] == -1)
+			printf("WEST\n");point.wall = WEST;
+	}
+	else if (is_int(point.y))
+	{
+		if (data->map->grid[(int)point.y][(int)point.x] == 1 || \
+			data->map->grid[(int)point.y][(int)point.x] == -1)
+			printf("SOUTH\n");point.wall = SOUTH;
+		if (data->map->grid[(int)point.y - 1][(int)point.x] == 1 || \
+			data->map->grid[(int)point.y - 1][(int)point.x] == -1)
+			printf("NORTH\n");point.wall = NORTH;
+	}
+	printf("\n");
+	return (point);
+}
+
 static t_bool	set_next_point_horizontal(t_vf2d *next_point, \
 							t_vf2d *current_pos, t_data *data, float angle)
 {
@@ -59,14 +86,14 @@ static t_end_ray	end_ray(t_data *data, float angle)
 	t_end_ray	end_ray_v;
 
 	if (-0.001 < sin(angle) && sin(angle) < 0.001)
-		return (end_ray_vertical(data, angle));
+		return (set_wall(end_ray_vertical(data, angle), data));
 	if (-0.001 < cos(angle) && cos(angle) < 0.001)
-		return (end_ray_horizontal(data, angle));
+		return (set_wall(end_ray_horizontal(data, angle), data));
 	end_ray_h = end_ray_horizontal(data, angle);
 	end_ray_v = end_ray_vertical(data, angle);
 	if (end_ray_h.dist < end_ray_v.dist)
-		return (end_ray_h);
-	return (end_ray_v);
+		return (set_wall(end_ray_h, data));
+	return (set_wall(end_ray_v, data));
 }
 
 void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
@@ -88,7 +115,7 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 	}
 }
 
-/*----------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------
  void	draw2d_line1(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
  {
  	t_vf2d	convert1;
@@ -163,4 +190,4 @@ void	trace_ray_casting1(t_data *data, t_mlx_data *inf, int ts)
 	usleep(1);
 }
 
-/*------------------------------------------------------------------------------------------------------------*/
+------------------------------------------------------------------------------------------------------------*/
