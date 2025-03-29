@@ -25,13 +25,11 @@ void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
 		while (cur_x <= map->x_max)
 		{
 			if (grid[cur_y][cur_x] == 0)
-			{
 				draw_square(inf, (t_vi2d){cur_x, cur_y}, ts, WHITE);
-			}
 			else if (grid[cur_y][cur_x] == 1)
-			{
 				draw_square(inf, (t_vi2d){cur_x, cur_y}, ts, BLUE);
-			}
+			else if (grid[cur_y][cur_x] == -1)
+				draw_square(inf, (t_vi2d){cur_x, cur_y}, ts, BLACK);
 			++cur_x;
 		}
 		++cur_y;

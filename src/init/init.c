@@ -58,8 +58,10 @@ static void init_vars(t_data *data)
 	data->key[SOUTH] = 0;
 	data->key[WEST] = 0;
 	data->key[SPACE] = 0;
-	data->map->ceiling_color = YELLOW;
-	data->map->floor_color = GREEN;
+	data->key[LEFT_ARROW] = 0;
+	data->key[RIGHT_ARROW] = 0;
+	data->map->ceiling_color = SKY_BLUE;
+	data->map->floor_color = GRASS_GREEN;
 }
 
 /**

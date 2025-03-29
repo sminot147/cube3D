@@ -52,7 +52,6 @@ static void	fill_map(t_lststr **lst_map, t_data *data)
 		j = -1;
 		while (current->content[++j])
 		{
-		
 			if (current->content[j] == ' ')
 				data->map->grid[i][j] = -1;
 			else if (ft_strchr("NESW", current->content[j]) != 0)
@@ -115,5 +114,4 @@ void	creat_and_fill_map(t_lststr **lst_map, t_data *data)
 	creat_map(lst_map, data);
 	fill_map(lst_map, data);
 	print_map(data);
-	
 }

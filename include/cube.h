@@ -26,6 +26,7 @@ void	render_view(t_data *data);
 void	process_input(t_data *data);
 t_bool	try_move(t_data *data, float angle);
 int		mouse_move(int x, int y, void *param);
+void	arrow_angle_update(t_data *data, int left, int right);
 int		update_action(void *param);
 
 /* ************************************************************************** */

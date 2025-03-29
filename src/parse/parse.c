@@ -74,7 +74,7 @@ void print_structure(const t_reading_map_status *s) {
  * @brief Read the map, change texture if necesserary, stock all the map in 
  * lst_map, exit if map and param are mixed
  * 
- * @param fd file_descriptore of the map
+ * @param fd file_descriptor of the map
  * 
  * @param lst_map stock all line of map in the linked list
  * 

@@ -60,7 +60,7 @@ typedef struct	s_mlx_inf
 typedef struct s_data
 {
 	int			tile_size;
-	int			key[5];
+	int			key[7];
 	float		view_angle;
 	int			minimap_size;
 	t_vi2d		mouse_pos;

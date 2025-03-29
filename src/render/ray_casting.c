@@ -113,8 +113,8 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 		angle = data->view_angle + (i * M_PI / 180);
 		end_ray1 = end_ray(data, angle);
 		render_ray3d(i, &end_ray1, data);
-		end_ray2.x = end_ray1.x;
-		end_ray2.y = end_ray1.y;
+		end_ray2.x = end_ray1.x;			// ptet suppr cet affichage
+		end_ray2.y = end_ray1.y;			// car il sentre mele avec le reste
 		draw2d_line(inf, ts, end_ray2, data->player_pos);
 		i++;
 	}

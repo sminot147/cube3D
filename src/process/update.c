@@ -32,14 +32,13 @@ int	update_action(void *param)
 static t_bool	need_visual_update(t_data *data)
 {
 	t_bool		flag;
-	t_mlx_data	*info;
 
 	flag = FALSE;
-	info = data->mlx_inf;
-	if (!isequal_vi2d(data->mouse_pos, (t_vi2d){WIDTH*0.5, HEIGHT*0.5}))
+	if (!isequal_vi2d(data->mouse_pos, (t_vi2d){HALF_WIDTH, HALF_HEIGHT}))
 	{
-		mlx_mouse_move(info->mlx, info->win, WIDTH*0.5, HEIGHT*0.5);
-		data->mouse_pos = (t_vi2d){WIDTH*0.5, HEIGHT*0.5};
+		data->mouse_pos = (t_vi2d){HALF_WIDTH, HALF_HEIGHT};
+		mlx_mouse_move(data->mlx_inf->mlx, data->mlx_inf->win, \
+					HALF_WIDTH, HALF_HEIGHT);
 		flag = TRUE;
 	}
 	if (data->key[NORTH] && try_move(data, 0))
@@ -50,6 +49,10 @@ static t_bool	need_visual_update(t_data *data)
 		flag = TRUE;
 	if (data->key[EAST] && try_move(data, -M_PI * 0.5))
 		flag = TRUE;
+	if (data->key[RIGHT_ARROW] || data->key[LEFT_ARROW])
+		flag = TRUE;
+	if (data->key[RIGHT_ARROW] || data->key[LEFT_ARROW])
+		arrow_angle_update(data, data->key[LEFT_ARROW], data->key[RIGHT_ARROW]);
 	if (change_mapsize(data, data->key[SPACE]))
 		flag = TRUE;
 	return (flag);

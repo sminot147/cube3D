@@ -6,7 +6,7 @@
 /*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:43:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/29 12:50:40 by v                ###   ########.fr       */
+/*   Updated: 2025/03/29 20:48:28 by v                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_one_point(t_vf2d *point, char *message)
 
 float	calc_dist(t_vf2d point1, t_vf2d point2)
 {
-	//tu en a pas deja une ?
+	//tu en a pas deja une ? nop, mais j ai la meme sur une ligne dans une func
 	return (sqrt((point2.x - point1.x) * (point2.x - point1.x) + \
 				(point2.y - point1.y) * (point2.y - point1.y)));
 }

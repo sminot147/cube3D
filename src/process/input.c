@@ -45,6 +45,10 @@ static int	key_press(int keycode, void *param)
 		data->key[SOUTH] = 1;
 	else if (keycode == XK_d)
 		data->key[EAST] = 1;
+	else if (keycode == XK_Left)
+		data->key[LEFT_ARROW] = 1;
+	else if (keycode == XK_Right)
+		data->key[RIGHT_ARROW] = 1;
 	else if (keycode == XK_space)
 		data->key[SPACE] = 1;
 	return (0);
@@ -72,6 +76,10 @@ static int	key_release(int keycode, void *param)
 		data->key[SOUTH] = 0;
 	else if (keycode == XK_d)
 		data->key[EAST] = 0;
+	else if (keycode == XK_Left)
+		data->key[LEFT_ARROW] = 0;
+	else if (keycode == XK_Right)
+		data->key[RIGHT_ARROW] = 0;
 	else if (keycode == XK_space)
 		data->key[SPACE] = 0;
 	return (0);
