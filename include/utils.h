@@ -36,14 +36,25 @@ void	exit_free_with_msg(char *comment, t_data *data, int code);
 /*									VEC_TOOLS								  */
 /* ************************************************************************** */
 
-t_vi2d	sum_vec2d(t_vi2d position, t_vi2d to_sum);
-t_vi2d	sub_vec2d(t_vi2d position, t_vi2d to_sub);
-t_vi2d	mul_vec2d(t_vi2d position, t_vi2d to_mul);
+t_vi2d	sum_vi2d(t_vi2d position, t_vi2d to_sum);
+t_vi2d	sub_vi2d(t_vi2d position, t_vi2d to_sub);
+t_vi2d	mul_vi2d(t_vi2d position, t_vi2d to_mul);
+t_bool	isequal_vi2d(t_vi2d point1, t_vi2d point2);
 
 /* ************************************************************************** */
 /*									TIME									  */
 /* ************************************************************************** */
 
 int	wait_fps(void);
+
+/* ************************************************************************** */
+/*									GEOMETRY								  */
+/* ************************************************************************** */
+
+void	set_pixel(t_mlx_data *inf, int x, int y, int color);
+void	set_pixels(t_mlx_data *inf, int c, size_t n, char *address);
+void	draw_square(t_mlx_data *inf, t_vi2d position, int tile_size, int color);
+void	draw_circle(t_mlx_data *inf, t_vf2d position, int diam, int color);
+void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color);
 
 #endif

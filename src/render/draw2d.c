@@ -47,12 +47,12 @@ void	draw2d_map(int ts, t_map *map, t_mlx_data *inf)
  * @param data Pointer to the data structure
  * @param ts Tile size in pixels.
  */
-void	draw2d_camera(t_map *map, t_mlx_data *inf, t_data *data, int ts)
+void	draw2d_camera(t_mlx_data *inf, t_data *data, int ts)
 {
 	t_vf2d	angle_pos;
 
-	angle_pos.x = data->player_pos.x + 1 * cos(data->view_angle);
-	angle_pos.y = data->player_pos.y + 1 * sin(data->view_angle);
+	angle_pos.x = data->player_pos.x  + cos(data->view_angle);
+	angle_pos.y = data->player_pos.y - sin(data->view_angle);
 	draw2d_line(inf, ts, angle_pos, data->player_pos);
 	draw_circle(inf, data->player_pos, ts, GREEN);
 }

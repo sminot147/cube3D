@@ -11,11 +11,12 @@
 # define BLUE 0x0000FF
 # define YELLOW 0xFFFF00
 # define BLACK 0x000000
+# define SPACE 4
 
 # define WIDTH 1280
-# define HEIGHT 720
+# define HEIGHT 960
 
-# define FIELD_OF_VIEW 60
+# define FIELD_OF_VIEW 90
 
 # define RADIANT_MAX M_PI*2
 

@@ -17,7 +17,7 @@ void	set_pixel(t_mlx_data *inf, int x, int y, int color)
 	{
 		return ;
 	}
-	dst = inf->data + (y * inf->size_len + x * (inf->bpp / 8));
+	dst = inf->data + (y * inf->size_line + x * (inf->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -117,25 +117,22 @@ void	draw_circle(t_mlx_data *inf, t_vf2d pos, int diam, int color)
 	}
 }
 
-void	set_pixels(t_mlx_data *inf, int c, size_t n)
+void	set_pixels(t_mlx_data *inf, int c, size_t n, char *address)
 {
-	size_t	i;
-	int		x;
-	int		y;
+	size_t	x;
+	size_t	y;
 	char	*dst;
 
-	i = 0;
 	y = 0;
-	while (y < HEIGHT)
+	while ((y * inf->size_line) < n)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < WIDTH && (x * y) < n)
 		{
-			dst = inf->data + (y * inf->size_len + x * (inf->bpp / 8));
+			dst = address + (y * inf->size_line + x * (inf->bpp / 8));
 			*(unsigned int *)dst = c;
-			++x;
+			x ++;
 		}
 		++y;
 	}
-
 }

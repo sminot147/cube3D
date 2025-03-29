@@ -28,9 +28,10 @@ typedef struct s_map
 
 typedef struct s_end_ray
 {
-	float	x;
-	float	y;
-	float	dist;
+	float		x;
+	float		y;
+	float		dist;
+	t_direction	wall;
 }	t_end_ray;
 
 typedef	struct s_vi2d
@@ -53,16 +54,16 @@ typedef struct	s_mlx_inf
 	char	*data;
 	int		bpp;
 	int		endian;
-	int		size_len;
+	int		size_line;
 }	t_mlx_data;
 
 typedef struct s_data
 {
 	int			tile_size;
-	int			key[4];
+	int			key[5];
 	float		view_angle;
 	int			minimap_size;
-	t_vf2d		mouse_pos;
+	t_vi2d		mouse_pos;
 	t_vf2d		player_pos;
 	t_map		*map;
 	t_mlx_data	*mlx_inf;

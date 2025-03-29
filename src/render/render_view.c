@@ -13,7 +13,7 @@ void	render_view(t_data *data)
 	t_mlx_data *inf;
 
 	inf = data->mlx_inf;
-	ft_bzero(inf->data, inf->size_len * HEIGHT);
+	ft_bzero(inf->data, inf->size_line * HEIGHT);
 	fill_img(data);
 	mlx_put_image_to_window(inf->mlx, inf->win, inf->img, 0, 0);
 }
@@ -30,5 +30,5 @@ static void	fill_img(t_data *data)
 	render_surface(HEIGHT * 0.5, data);
 	trace_ray_casting(data, data->mlx_inf, data->tile_size);
 	draw2d_map(tile_size, data->map, data->mlx_inf);
-	draw2d_camera(data->map, data->mlx_inf, data, tile_size);
+	draw2d_camera(data->mlx_inf, data, tile_size);
 }

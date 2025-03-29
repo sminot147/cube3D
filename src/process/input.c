@@ -5,7 +5,6 @@
 static int	key_press(int keycode, void *param);
 static int	key_release(int keycode, void *param);
 static int	close_program(void *param);
-static int	update_action(void *param);
 
 /**
  * @brief Processes input events, sets up hooks, and loop events.
@@ -25,32 +24,6 @@ void	process_input(t_data *data)
 	mlx_loop(data->mlx_inf->mlx);
 }
 
-/**
- * @brief Updates the game state based on user input and renders the view.
- * 
- * @param param Pointer to the main data structure (cast to void*).
- * @return Always returns 0.
- */
-static int	update_action(void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	if (wait_fps())
-		return (0);
-	if (data->key[NORTH])
-		try_move(data, 0);
-	if (data->key[WEST])
-		try_move(data, -M_PI * 0.5);
-	if (data->key[SOUTH])
-		try_move(data, M_PI);
-	if (data->key[EAST])
-		try_move(data, M_PI * 0.5);
-	data->tile_size = data->minimap_size / (data->map->x_max + 1);
-	render_view(data);
-	return (0);
-}
-
 
 /**
  * @brief Handles key press events and updates the corresponding key state.
@@ -59,7 +32,6 @@ static int	update_action(void *param)
  * @param param Pointer to the main data structure (cast to void*).
  * @return Always returns 0.
  */
-
 static int	key_press(int keycode, void *param)
 {
 	t_data	*data;
@@ -74,7 +46,7 @@ static int	key_press(int keycode, void *param)
 	else if (keycode == XK_d)
 		data->key[EAST] = 1;
 	else if (keycode == XK_space)
-		data->minimap_size = WIDTH;
+		data->key[SPACE] = 1;
 	return (0);
 }
 
@@ -101,7 +73,7 @@ static int	key_release(int keycode, void *param)
 	else if (keycode == XK_d)
 		data->key[EAST] = 0;
 	else if (keycode == XK_space)
-		data->minimap_size = WIDTH / 6;
+		data->key[SPACE] = 0;
 	return (0);
 }
 
