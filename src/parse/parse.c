@@ -35,7 +35,7 @@ static t_bool	is_map_line(char *line)
  * @return Return the boolean that indicates if the line is a line of the map
  *  or a parameter.
  */
-static t_bool	set_status_and_is_map(char *line, t_reading_map_status *status)
+t_bool	set_status_and_is_map(char *line, t_reading_map_status *status)
 {
 	if (is_map_line(line) == TRUE)
 	{
@@ -61,7 +61,6 @@ static t_bool	set_status_and_is_map(char *line, t_reading_map_status *status)
 	}
 }
 
-
 void print_structure(const t_reading_map_status *s) {
     ft_printf("\tmap_start: %s\n", s->map_start ? "TRUE" : "FALSE");
     ft_printf("\tmap_is_end: %s\n", s->map_is_end ? "TRUE" : "FALSE");
@@ -80,42 +79,21 @@ void print_structure(const t_reading_map_status *s) {
  * 
  * @param data set in data->map : x_max and y_max
  */
-static void	read_map(int fd, t_lststr **lst_map, t_data *data)
+static void	read_file(int fd, t_lststr **lst_map, t_data *data)
 {
-	char					*line;
 	t_reading_map_status	status;
 
-	ft_memset(&status, 0, sizeof(status));
 	status.map_is_valid = TRUE;
-	line = get_next_line_without_nl(fd);
-	while (line)
-	{
-		if (set_status_and_is_map(line, &status))
-		{
-			++(data->map->y_max);
-			if (add_content_lst(lst_map, line) == FALSE)
-			{
-				close(fd);
-				safe_exit_parse(data, lst_map, line, "Malloc failed");
-			}
-			if (data->map->x_max < ft_strlen(line) - 1)
-				data->map->x_max = ft_strlen(line) - 1;
-		}
-		else
-		{
-			if (status.map_is_valid == FALSE)
-			{
-				close(fd);
-				safe_exit_parse(data, lst_map, line, "Map invalid");
-			}
-			free(line);//faire la fonction qui change les textures + free la line
-		}
-		line = get_next_line_without_nl(fd);
-	}
-	--(data->map->y_max);
+	ft_memset(&status, 0, sizeof(status));
+	parse_textures(fd, data, &status);
+	parse_map(fd, status, lst_map, data);
 }
-
-void	parse_map(char *map_name, t_data *data)
+/*
+Structure reading_map_status, ptet changer le nom si tu veux inclure les textures aussi
+dedans.
+parse_map check gnl = NULL a faire
+*/
+void	parse_file(char *map_name, t_data *data)
 {
 	int			fd;
 	t_lststr	*lst_map;
@@ -127,10 +105,11 @@ void	parse_map(char *map_name, t_data *data)
 		putstr_fd("Error\nMap not open\n", 2);
 		safe_exit(data);
 	}
-	read_map(fd, &lst_map, data);
+	read_file(fd, &lst_map, data);
 	if (close(fd))
 		safe_exit_parse(data, &lst_map, NULL, "Map refuse to close");
-	creat_and_fill_map(&lst_map, data);
+	creat_map(lst_map, data);
+	fill_map(lst_map, data);
 	clear_lst_str(&lst_map);
 	//check map
 	// safe_exit(data);

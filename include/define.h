@@ -28,4 +28,5 @@
 
 # define RADIANT_MAX M_PI * 2
 
+
 #endif

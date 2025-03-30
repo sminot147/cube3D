@@ -117,7 +117,7 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 		end_ray2.y = end_ray1.y;			// car il sentre mele avec le reste
 		draw2d_line(inf, ts, end_ray2, data->player_pos);
 		i++;
-	}
+	} // ajouter la fonction avec le cos(angle) pour le fisheye problem
 }
 
 /*----------------------------------------------------------------------------------------------

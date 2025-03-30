@@ -30,6 +30,7 @@ void	free_double_array(void **array);
 
 void	exit_with_msg(char *comment, int code);
 void	exit_free_with_msg(char *comment, t_data *data, int code);
+void	error_in_map(t_lststr **lst_map, t_data *data, char *line_error);
 
 
 /* ************************************************************************** */

@@ -45,3 +45,11 @@ static void close_mlx(t_mlx_data *info)
 	mlx_destroy_display(info->mlx);
 	free(info->mlx);
 }
+
+void	error_in_map(t_lststr **lst_map, t_data *data, char *line_error)
+{
+	putstr_fd("Error\nInvalide line on map file :", 2);
+	putstr_fd(line_error, 2);
+	clear_lst_str(lst_map);
+	safe_exit(data);
+}

@@ -63,6 +63,7 @@ typedef struct s_data
 	int			key[7];
 	float		view_angle;
 	int			minimap_size;
+	char		*wall_textures[4];
 	t_vi2d		mouse_pos;
 	t_vf2d		player_pos;
 	t_map		*map;

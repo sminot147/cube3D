@@ -9,15 +9,21 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-void	parse_map(char *map_name, t_data *data);
+void	parse_file(char *map_name, t_data *data);
 
-/*---------------------------------------------------------------------------*/
-/*                              fill_map.c                                   */
-/*---------------------------------------------------------------------------*/
+/* ************************************************************************** */
+/*								PARSING										  */
+/* ************************************************************************** */
 
-void	creat_and_fill_map(t_lststr **lst_map, t_data *data);
+void	creat_map(t_lststr **lst_map, t_data *data);
+void	fill_map(t_lststr **lst_map, t_data *data);
 void	init_data(t_data *data);
 void	render_view(t_data *data);
+
+void	parse_map(int fd, t_reading_map_status status, \
+				t_lststr **lst_map, t_data *data);
+void	parse_textures(int fd, t_data *data, t_reading_map_status *status);
+t_bool	set_status_and_is_map(char *line, t_reading_map_status *status);
 
 /* ************************************************************************** */
 /*								PROCESS										  */
