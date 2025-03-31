@@ -110,7 +110,7 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 	i = -FIELD_OF_VIEW / 2;
 	while (i <= FIELD_OF_VIEW / 2)
 	{
-		angle = data->view_angle + (i * M_PI / 180);
+		angle = data->view_angle + (i * M_PI / 180); // changer i pour angle_i ? et i = WIDTH
 		end_ray1 = end_ray(data, angle);
 		render_ray3d(i, &end_ray1, data);
 		end_ray2.x = end_ray1.x;			// ptet suppr cet affichage

@@ -63,7 +63,7 @@ void	fill_map(t_lststr **lst_map, t_data *data)
 	}
 }
 
-void	parse_map(int fd, t_reading_map_status status, \
+void	parse_map(int fd, t_parsing_status status, \
 				t_lststr **lst_map, t_data *data)
 {
 	char	*line;
@@ -87,6 +87,8 @@ void	parse_map(int fd, t_reading_map_status status, \
 			close(fd);
 			safe_exit_parse(data, lst_map, line, "Map invalid");
 		}
+		else
+			free(line);
 		line = get_next_line_without_nl(fd);
 	}
 	--(data->map->y_max);

@@ -23,6 +23,7 @@ PSEUDO = render3d.c
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\
 		error.c\
+		color.c\
 		geometry.c\
 		exit.c\
 		liste_str.c\

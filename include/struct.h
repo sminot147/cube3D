@@ -19,8 +19,8 @@ typedef enum e_direction
 
 typedef struct s_map
 {
-	int ceiling_color;
-	int floor_color;
+	unsigned int ceiling_color;
+	unsigned int floor_color;
 	size_t	x_max;
 	size_t	y_max;
 	int		**grid;
@@ -84,13 +84,13 @@ typedef struct s_lst_str
 /*                                parse.c                                    */
 /*---------------------------------------------------------------------------*/
 
-typedef struct s_reading_map_status
+typedef struct s_parsing_status
 {
 	t_bool	map_start;
 	t_bool	map_is_end;
 	t_bool	param_start;
 	t_bool	param_is_end;
 	t_bool	map_is_valid;
-}	t_reading_map_status;
+}	t_parsing_status;
 
 #endif

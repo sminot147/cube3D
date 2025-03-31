@@ -20,10 +20,10 @@ void	fill_map(t_lststr **lst_map, t_data *data);
 void	init_data(t_data *data);
 void	render_view(t_data *data);
 
-void	parse_map(int fd, t_reading_map_status status, \
+void	parse_map(int fd, t_parsing_status status, \
 				t_lststr **lst_map, t_data *data);
-void	parse_textures(int fd, t_data *data, t_reading_map_status *status);
-t_bool	set_status_and_is_map(char *line, t_reading_map_status *status);
+t_bool	parse_textures(int fd, t_data *data);
+t_bool	set_status_and_is_map(char *line, t_parsing_status *status);
 
 /* ************************************************************************** */
 /*								PROCESS										  */

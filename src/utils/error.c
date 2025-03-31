@@ -27,15 +27,14 @@ static void	free_data(t_data *data)
 	if (data->map)
 	{
 		if (data->map->grid)
-		{
 			free_double_array((void **)data->map->grid);
-		}
-		free(data->map);
 	}
-	if (data->mlx_inf)
-	{
-		free(data->mlx_inf);
-	}
+	free(data->map);
+	free(data->mlx_inf);
+	free(data->wall_textures[0]);
+	free(data->wall_textures[1]);
+	free(data->wall_textures[2]);
+	free(data->wall_textures[3]);
 }
 
 static void close_mlx(t_mlx_data *info)

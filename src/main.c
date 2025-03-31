@@ -8,13 +8,8 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	check_arg(ac, av);
-	data.map = ft_calloc(1, sizeof(t_map));
-	if (!data.map)
-	{
-		exit_with_msg("Allocation", 1);
-	}
-	parse_file(av[1], &data);
 	init_data(&data);
+	parse_file(av[1], &data);
 	render_view(&data);
 	process_input(&data);
 	return (1);
