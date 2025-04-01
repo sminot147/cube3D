@@ -106,6 +106,21 @@ static void	read_map(int fd, t_lststr **lst_map, t_data *data)
 	--(data->map->y_max);
 }
 
+void print_map(t_data *data) {
+	t_map *m = data->map;
+
+    ft_printf("Map dimensions: %i x %i\n", m->x_max, m->y_max);
+    for (size_t i = 0; i <= m->y_max; i++) {
+        for (size_t j = 0; j <= m->x_max; j++) {
+			if (m->grid[i][j] != -1)
+         	   ft_printf("%d ", m->grid[i][j]);
+			else
+			 	ft_printf(". ");
+        }
+        ft_printf("\n");
+    }
+}
+
 /**
  * @brief Call the different step of map parsing
  * 
@@ -129,5 +144,6 @@ void	parse_map(char *map_name, t_data *data)
 		safe_exit_parse(data, &lst_map, NULL, "Map refuse to close");
 	creat_and_fill_map(&lst_map, data);
 	clear_lst_str(&lst_map);
-	//check_map(data);
+	print_map(data);
+	check_map_validity(data);
 }

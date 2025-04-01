@@ -6,3 +6,4 @@ map que des param
 
 map que des lignes vides
 
+tester des les couloirs avec 

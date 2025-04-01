@@ -5,7 +5,8 @@ SRC_FILE = main.c\
 
 PARSE_DIR = $(SRC_DIR)parse/
 PARSE = parse.c\
-		fill_map.c
+		fill_map.c\
+		checker_map.c\
 
 INIT_DIR = $(SRC_DIR)init/
 INIT = init.c
