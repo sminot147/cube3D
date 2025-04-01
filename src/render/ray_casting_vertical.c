@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ray_casting_vertical.c                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 17:43:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/01 15:55:19 by sminot           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "struct.h"
 #include "cube.h"
 
@@ -19,13 +7,18 @@ void	print_one_point(t_vf2d *point, char *message)
 	printf("%s[%f , %f]\n", message, point->x, point->y);
 }
 
+/**
+ * @return the distance between two point
+ */
 float	calc_dist(t_vf2d point1, t_vf2d point2)
 {
-	//tu en a pas deja une ? nop, mais j ai la meme sur une ligne dans une func
 	return (sqrt((point2.x - point1.x) * (point2.x - point1.x) + \
 				(point2.y - point1.y) * (point2.y - point1.y)));
 }
 
+/**
+ * @brief return TRUE if the float is a int, FALSE otherwise
+ */
 t_bool	is_int(float nb)
 {
 	float	diff;
@@ -36,6 +29,9 @@ t_bool	is_int(float nb)
 	return (FALSE);
 }
 
+/**
+ * @brief return TRUE if the ray reach a wall, FALSE otherwise
+ */
 t_bool	is_wall(t_vf2d *point, t_data *data, float angle)
 {
 	if ((point->x <= 0 || point->y <= 0 || point->x >= data->map->x_max || \
@@ -62,6 +58,12 @@ t_bool	is_wall(t_vf2d *point, t_data *data, float angle)
 	return (FALSE);
 }
 
+/**
+ * @brief Calcul the next vertical intersections between line of the grid 
+ * and the ray
+ * 
+ * @return TRUE if the ray reach a wall, FALSE otherwise
+ */
 static t_bool	set_next_point_vertical(t_vf2d *next_point, \
 							t_vf2d *current_pos, t_data *data, float angle)
 {
@@ -92,6 +94,11 @@ static t_bool	set_next_point_vertical(t_vf2d *next_point, \
 	return (is_wall(next_point, data, angle));
 }
 
+/**
+ * @brief look all vertical intersections between line of the grid and the ray
+ *  
+ * @return the first vertical intersection
+ */
 t_end_ray	end_ray_vertical(t_data *data, float angle)
 {
 	t_vf2d		current_point;

@@ -1,41 +1,38 @@
-
 #include "struct.h"
 #include "cube.h"
 #include "define.h"
 
-void	print_one_point(t_vf2d *point, char *message); /*-------------------------------------------*/ //sup
-
+/**
+ * @brief set on which wall the ray stopped
+ */
 t_end_ray	set_wall(t_end_ray point, t_data *data)
 {
-	if ((point.x < 0 || point.y < 0 || point.x > data->map->x_max || \
-	 		point.y > data->map->y_max))
-			print_one_point(&data->player_pos, "Attention t'a rien a foutre la : ---------------------- player pos :\n");
-	else if (is_int(point.x))
+	if ((point.x <= 0 || point.y <= 0 || point.x > data->map->x_max || \
+			point.y > data->map->y_max))
+		print_one_point(&data->player_pos, "Attention t'a rien a foutre la : ---------------------- player pos :\n");
+	if (is_int(point.x))
 	{
-		if (data->map->grid[(int)point.y][(int)point.x] == 1 || \
-			data->map->grid[(int)point.y][(int)point.x] == -1)
+		if (data->map->grid[(int)point.y][(int)point.x] == 1)
 			point.wall = EAST;
-			// printf("EAST\n");
-		if (data->map->grid[(int)point.y][(int)point.x - 1] == 1 || \
-			data->map->grid[(int)point.y][(int)point.x - 1] == -1)
+		if (data->map->grid[(int)point.y][(int)point.x - 1] == 1)
 			point.wall = WEST;
-			// printf("WEST\n");
 	}
 	if (is_int(point.y))
 	{
-		if (data->map->grid[(int)point.y][(int)point.x] == 1 || \
-			data->map->grid[(int)point.y][(int)point.x] == -1)
+		if (data->map->grid[(int)point.y][(int)point.x] == 1)
 			point.wall = SOUTH;
-			// printf("SOUTH\n");
-		if (data->map->grid[(int)point.y - 1][(int)point.x] == 1 || \
-			data->map->grid[(int)point.y - 1][(int)point.x] == -1)
+		if (data->map->grid[(int)point.y - 1][(int)point.x] == 1)
 			point.wall = NORTH;
-			// printf("NORTH\n");
 	}
-	// printf("\n");
 	return (point);
 }
 
+/**
+ * @brief Calcul the next horizontal intersections between line of the grid 
+ * and the ray
+ * 
+ * @return TRUE if the ray reach a wall, FALSE otherwise
+ */
 static t_bool	set_next_point_horizontal(t_vf2d *next_point, \
 							t_vf2d *current_pos, t_data *data, float angle)
 {
@@ -66,6 +63,11 @@ static t_bool	set_next_point_horizontal(t_vf2d *next_point, \
 	return (is_wall(next_point, data, angle));
 }
 
+/**
+ * @brief look all horizontal intersections between line of the grid and the ray
+ * 
+ * @return the first horizontal intersection
+ */
 t_end_ray	end_ray_horizontal(t_data *data, float angle)
 {
 	t_vf2d		current_point;
@@ -84,6 +86,9 @@ t_end_ray	end_ray_horizontal(t_data *data, float angle)
 	return (last_point);
 }
 
+/**
+ * @brief Treat all ray of ray casting
+ */
 static t_end_ray	end_ray(t_data *data, float angle)
 {
 	t_end_ray	end_ray_h;
@@ -100,6 +105,9 @@ static t_end_ray	end_ray(t_data *data, float angle)
 	return (set_wall(end_ray_v, data));
 }
 
+/**
+ * @brief Call different part of ray casting
+ */
 void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 {
 	int			i;
@@ -113,8 +121,8 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 		angle = data->view_angle + (i * M_PI / 180);
 		end_ray1 = end_ray(data, angle);
 		render_ray3d(i, &end_ray1, data);
-		end_ray2.x = end_ray1.x;			// ptet suppr cet affichage
-		end_ray2.y = end_ray1.y;			// car il sentre mele avec le reste
+		end_ray2.x = end_ray1.x;		//je crois tu l'as déjà supp nan ?
+		end_ray2.y = end_ray1.y;
 		draw2d_line(inf, ts, end_ray2, data->player_pos);
 		i++;
 	}

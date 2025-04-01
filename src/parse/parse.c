@@ -7,13 +7,13 @@
  */
 static t_bool	is_map_line(char *line)
 {
-	size_t i;
+	size_t	i;
 
 	i = -1;
 	while (line[++i] == ' ')
 		;
-	if (line[i] == '\0')		//si on n'accepte pas les ligne avec que des espace
-		return (FALSE);			//mettre cette condition avant de passer les espaces
+	if (line[i] == '\0')
+		return (FALSE);
 	if (ft_strncmp(&line[i], "NO", 2) == 0)
 		return (FALSE);
 	if (ft_strncmp(&line[i], "SO", 2) == 0)
@@ -61,15 +61,6 @@ static t_bool	set_status_and_is_map(char *line, t_reading_map_status *status)
 	}
 }
 
-
-void print_structure(const t_reading_map_status *s) {
-    ft_printf("\tmap_start: %s\n", s->map_start ? "TRUE" : "FALSE");
-    ft_printf("\tmap_is_end: %s\n", s->map_is_end ? "TRUE" : "FALSE");
-    ft_printf("\tparam_start: %s\n", s->param_start ? "TRUE" : "FALSE");
-    ft_printf("\tparam_is_end: %s\n", s->param_is_end ? "TRUE" : "FALSE");//enlever tout la fonction
-    ft_printf("\tmap_is_valid: %s\n", s->map_is_valid ? "TRUE" : "FALSE");
-}
-
 /**
  * @brief Read the map, change texture if necesserary, stock all the map in 
  * lst_map, exit if map and param are mixed
@@ -115,6 +106,12 @@ static void	read_map(int fd, t_lststr **lst_map, t_data *data)
 	--(data->map->y_max);
 }
 
+/**
+ * @brief Call the different step of map parsing
+ * 
+ * @note The fonction exit if map is not valid or we have a problem 
+ * during the parsind (open, malloc,etc failed) 
+ */
 void	parse_map(char *map_name, t_data *data)
 {
 	int			fd;
@@ -132,8 +129,5 @@ void	parse_map(char *map_name, t_data *data)
 		safe_exit_parse(data, &lst_map, NULL, "Map refuse to close");
 	creat_and_fill_map(&lst_map, data);
 	clear_lst_str(&lst_map);
-	//check map
-	// safe_exit(data);
-	//dup chaque element de lise pour avoir une map rectangle 
-	//					-> completer par des espaces ' ' les lignes plus courtes;
+	//check_map(data);
 }
