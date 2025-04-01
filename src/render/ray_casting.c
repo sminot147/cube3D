@@ -9,7 +9,7 @@ t_end_ray	set_wall(t_end_ray point, t_data *data)
 {
 	if ((point.x < 0 || point.y < 0 || point.x > data->map->x_max || \
 	 		point.y > data->map->y_max))
-			;
+			print_one_point(&data->player_pos, "Attention t'a rien a foutre la : ---------------------- player pos :\n");
 	else if (is_int(point.x))
 	{
 		if (data->map->grid[(int)point.y][(int)point.x] == 1 || \
@@ -21,7 +21,7 @@ t_end_ray	set_wall(t_end_ray point, t_data *data)
 			point.wall = WEST;
 			// printf("WEST\n");
 	}
-	else if (is_int(point.y))
+	if (is_int(point.y))
 	{
 		if (data->map->grid[(int)point.y][(int)point.x] == 1 || \
 			data->map->grid[(int)point.y][(int)point.x] == -1)

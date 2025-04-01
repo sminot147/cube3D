@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:43:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/01 15:04:16 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/01 15:55:19 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_bool	is_wall(t_vf2d *point, t_data *data, float angle)
 			data->map->grid[(int)point->y][(int)point->x - 1] == -1)
 			return (TRUE);
 	}
-	else if (is_int(point->y))
+	if (is_int(point->y))
 	{
 		if (data->map->grid[(int)point->y][(int)point->x] == 1 || \
 			data->map->grid[(int)point->y][(int)point->x] == -1)
