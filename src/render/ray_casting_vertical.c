@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_vertical.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: v <v@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 17:43:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/29 20:48:28 by v                ###   ########.fr       */
+/*   Updated: 2025/04/01 15:04:16 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_bool	set_next_point_vertical(t_vf2d *next_point, \
 	if (cos(angle) < 0)
 	{
 		if (is_int(current_pos->x))
-			next_point->x = next_point->x - 1;
+			next_point->x = current_pos->x - 1;
 		else
 			next_point->x = (float)(int)current_pos->x;
 	}
