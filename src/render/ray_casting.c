@@ -83,6 +83,7 @@ t_end_ray	end_ray_horizontal(t_data *data, float angle)
 	last_point.x = next_point.x;
 	last_point.y = next_point.y;
 	last_point.dist = calc_dist(next_point, data->player_pos);
+	last_point.dist *= cos(angle - data->view_angle);
 	return (last_point);
 }
 
@@ -110,7 +111,7 @@ static t_end_ray	end_ray(t_data *data, float angle)
  */
 void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 {
-	int			i;
+	float			i;
 	float		angle;
 	t_end_ray	end_ray1;
 	t_vf2d		end_ray2;
@@ -124,7 +125,7 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 		end_ray2.x = end_ray1.x;		//je crois tu l'as déjà supp nan ?
 		end_ray2.y = end_ray1.y;
 		draw2d_line(inf, ts, end_ray2, data->player_pos);
-		i++;
+		i += (float)FIELD_OF_VIEW / NB_RAY;
 	}
 }
 

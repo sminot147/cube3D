@@ -114,5 +114,6 @@ t_end_ray	end_ray_vertical(t_data *data, float angle)
 	last_point.x = next_point.x;
 	last_point.y = next_point.y;
 	last_point.dist = calc_dist(next_point, data->player_pos);
+	last_point.dist *= cos(angle - data->view_angle);
 	return (last_point);
 }
