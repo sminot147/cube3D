@@ -25,7 +25,7 @@ size_t	len_lst(t_lststr **lst_str);
 void	free_double_array(void **array);
 
 /* ************************************************************************** */
-/*									ERROR									  */
+/*									CLOSE									  */
 /* ************************************************************************** */
 
 void	exit_with_msg(char *comment, int code);

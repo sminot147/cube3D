@@ -9,7 +9,7 @@ int	main(int ac, char **av)
 
 	check_arg(ac, av);
 	ft_memset((void *)&data, 0, sizeof(data));
-	data.map = ft_calloc(1, sizeof(t_map)); /*pourquoi malloc data ? */
+	data.map = ft_calloc(1, sizeof(t_map));
 	if (!data.map)
 	{
 		exit_with_msg("Allocation", 1);

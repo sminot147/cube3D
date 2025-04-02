@@ -20,12 +20,13 @@
 
 # define WIDTH 1280
 # define HEIGHT 960
-
 # define HALF_WIDTH WIDTH * 0.5
 # define HALF_HEIGHT HEIGHT * 0.5
 
 # define FIELD_OF_VIEW 60
 # define NB_RAY 1600
+
+# define IMAGE_SIZE 64
 
 # define RADIANT_MAX M_PI * 2
 

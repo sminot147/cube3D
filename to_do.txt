@@ -9,7 +9,6 @@ map que des lignes vides
 tester des les couloirs avec des coin bizard
 
 
-Fishe eye suptile sur les murs sur le cote du au FOV ? Sur grille de correc /!\
-Map parsing a pauffiner
+Fishe eye suptile sur les murs sur le cote du au FOV
 Images
-Texture parsing a finir
+Faire le truc sur le parsing a la fin de la map et au debut bail avec les 0 la

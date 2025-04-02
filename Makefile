@@ -6,6 +6,8 @@ SRC_FILE = main.c\
 PARSE_DIR = $(SRC_DIR)parse/
 PARSE = parse.c\
 		fill_map.c\
+		fill_texture.c\
+		parse_color.c\
 		checker_map.c\
 
 INIT_DIR = $(SRC_DIR)init/
@@ -18,15 +20,17 @@ RENDER = render_view.c\
 		ray_casting_vertical.c\
 
 PSEUDO_DIR = $(RENDER_DIR)pseudo3d/
-PSEUDO = render3d.c
+PSEUDO = render3d.c\
+		draw_texture.c
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS = free_double_array.c\
-		error.c\
+		end_program.c\
 		geometry.c\
 		exit.c\
 		liste_str.c\
 		vector.c\
+		color.c\
 		frame.c
 
 PROCESS_DIR = $(SRC_DIR)process/

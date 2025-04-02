@@ -79,6 +79,7 @@ static void	read_map(int fd, t_lststr **lst_map, t_data *data)
 	ft_memset(&status, 0, sizeof(status));
 	status.map_is_valid = TRUE;
 	line = get_next_line_without_nl(fd);
+	
 	while (line)
 	{
 		if (set_status_and_is_map(line, &status))
@@ -139,6 +140,7 @@ void	parse_map(char *map_name, t_data *data)
 		putstr_fd("Error\nMap not open\n", 2);
 		safe_exit(data);
 	}
+	parse_textures(fd, data);
 	read_map(fd, &lst_map, data);
 	if (close(fd))
 		safe_exit_parse(data, &lst_map, NULL, "Map refuse to close");

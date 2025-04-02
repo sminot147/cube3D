@@ -24,18 +24,25 @@ void	exit_with_msg(char *comment, int code)
 
 static void	free_data(t_data *data)
 {
+	int	i;
+
+	i = 4;
 	if (data->map)
 	{
 		if (data->map->grid)
-		{
 			free_double_array((void **)data->map->grid);
-		}
 		free(data->map);
 	}
-	if (data->mlx_inf)
+	while (i-- >= 0)
 	{
-		free(data->mlx_inf);
+		free(data->images_name[i]);
+		if (data->face[i].img)
+		{
+			free(data->face[i].img);
+		}
 	}
+	if (data->mlx_inf)
+		free(data->mlx_inf);
 }
 
 static void close_mlx(t_mlx_data *info)
