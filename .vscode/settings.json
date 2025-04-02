@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"cube.h": "c",
+		"struct.h": "c",
+		"utils.h": "c",
+		"libft.h": "c",
+		"define.h": "c",
+		"array": "c"
+	}
+}
