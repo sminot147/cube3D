@@ -47,12 +47,12 @@ float		calc_dist(t_vf2d point1, t_vf2d point2);
 t_bool		is_int(float nb);
 t_bool		is_wall(t_vf2d *point, t_data *data, float angle);
 t_end_ray	end_ray_vertical(t_data *data, float angle);
-void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts);
+void		trace_ray_casting(t_data *data, t_mlx_data *inf, int ts);
 
 
 
 
 
-void	render_ray3d(int ray_index, t_end_ray *ray, t_data *data);
+void	render_ray3d(float ray_index, t_end_ray *ray, t_data *data);
 void	render_surface(int screen_midpoint_y, t_data *data);
 #endif

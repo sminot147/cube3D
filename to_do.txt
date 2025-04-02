@@ -7,3 +7,9 @@ map que des param
 map que des lignes vides
 
 tester des les couloirs avec des coin bizard
+
+
+Fishe eye suptile sur les murs sur le cote du au FOV ? Sur grille de correc /!\
+Map parsing a pauffiner
+Images
+Texture parsing a finir

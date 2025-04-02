@@ -70,7 +70,7 @@ int	mouse_move(int x, int y, void *param)
 	data = (t_data *)param;
 	if (WIDTH * 0.5 < x)
 	{
-		data->view_angle -= 0.005;
+		data->view_angle -= 0.015;
 		data->mouse_pos.x = x;
 		if (data->view_angle <= 0)
 		{
@@ -79,7 +79,7 @@ int	mouse_move(int x, int y, void *param)
 	}
 	else if (WIDTH * 0.5 > x)
 	{
-		data->view_angle += 0.005;
+		data->view_angle += 0.015;
 		data->mouse_pos.x = x;
 		if (data->view_angle >= RADIANT_MAX)
 		{
@@ -105,7 +105,7 @@ void	arrow_angle_update(t_data *data, int left, int right)
 	}
 	else if (right)
 	{
-		data->view_angle -= 0.05;
+		data->view_angle -= 0.01;
 		if (data->view_angle >= RADIANT_MAX)
 		{
 			data->view_angle = 0;

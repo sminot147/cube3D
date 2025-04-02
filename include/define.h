@@ -24,8 +24,8 @@
 # define HALF_WIDTH WIDTH * 0.5
 # define HALF_HEIGHT HEIGHT * 0.5
 
-# define FIELD_OF_VIEW 90
-# define NB_RAY 180
+# define FIELD_OF_VIEW 60
+# define NB_RAY 1600
 
 # define RADIANT_MAX M_PI * 2
 

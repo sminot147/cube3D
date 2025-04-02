@@ -111,10 +111,10 @@ static t_end_ray	end_ray(t_data *data, float angle)
  */
 void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 {
-	float			i;
+	float		i;
 	float		angle;
 	t_end_ray	end_ray1;
-	t_vf2d		end_ray2;
+	// t_vf2d		end_ray2;
 
 	i = -FIELD_OF_VIEW / 2;
 	while (i <= FIELD_OF_VIEW / 2)
@@ -122,10 +122,10 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 		angle = data->view_angle + (i * M_PI / 180);
 		end_ray1 = end_ray(data, angle);
 		render_ray3d(i, &end_ray1, data);
-		end_ray2.x = end_ray1.x;		//je crois tu l'as déjà supp nan ?
-		end_ray2.y = end_ray1.y;
-		draw2d_line(inf, ts, end_ray2, data->player_pos);
-		i += (float)FIELD_OF_VIEW / NB_RAY;
+		// end_ray2.x = end_ray1.x;		//a l affichage pour check si tout va bien ouais
+		// end_ray2.y = end_ray1.y;		//il se superpose mal avec le reste
+		// draw2d_line(inf, ts, end_ray2, data->player_pos);
+		i += (float)FIELD_OF_VIEW / (float)NB_RAY;
 	}
 }
 
