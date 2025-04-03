@@ -114,7 +114,6 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 	float		i;
 	float		angle;
 	t_end_ray	end_ray1;
-	// t_vf2d		end_ray2;
 
 	i = -FIELD_OF_VIEW * 0.5;
 	while (i <= FIELD_OF_VIEW * 0.5)
