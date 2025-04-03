@@ -1,5 +1,6 @@
 #include "cube.h"
 #include "utils.h"
+#include "define.h"
 
 /**
  * @brief Return the boolean that indicates if the line is a line of the map
@@ -97,7 +98,12 @@ static void	read_map(int fd, t_lststr **lst_map, t_data *data)
 			if (status.map_is_valid == FALSE)
 			{
 				close(fd);
-				safe_exit_parse(data, lst_map, line, "Map invalid");
+				safe_exit_parse(data, lst_map, line, "Invalid Map");
+			}
+			if (fill_texture(line, data) || fill_color(line, data))
+			{
+				close(fd);
+				safe_exit_parse(data, lst_map, line, TEXTURE_ERR);
 			}
 			free(line);
 		}

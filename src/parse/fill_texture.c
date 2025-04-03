@@ -2,11 +2,10 @@
 #include "define.h"
 #include "utils.h"
 
-static void	parse_texture(char **texture, t_data *data, int fd, int i);
+static t_bool	parse_texture(t_data *data, int i, char *texture);
 
-void	parse_textures(int fd, t_data *data)
+void	filling_textures(char *line, t_data *data)
 {
-	char	*line;
 	char	tab[4][3];
 	int		i;
 
@@ -15,30 +14,30 @@ void	parse_textures(int fd, t_data *data)
 	ft_memcpy(tab[2], "WE ", 4);
 	ft_memcpy(tab[3], "EA ", 4);
 	i = 0;
-	line = get_next_line_without_nl(fd);
-	if (!line)
+	while (i <= 3)
 	{
-		close(fd);
-		safe_exit_parse(data, NULL, NULL, "Allocation");
+		if (!ft_strncmp(tab[i], line, 3) && !data->images_name[i])
+		{
+			return (parse_texture(data, i, line));
+		}
+		++i;
 	}
-	while (i <= 3 && !ft_strncmp(tab[i], line, 3))
-		parse_texture(&line, data, fd, i++);
-	free(line);
-	if (i < 4)
-	{
-		close(fd);
-		safe_exit_parse(data, NULL, NULL, "Wrong texture format");
-	}
-	parse_color(fd, data);
+	return (FALSE);
 }
 
-static void	parse_texture(char **texture, t_data *data, int fd, int i)
+static t_bool	parse_texture(t_data *data, int i, char *texture)
 {
-	data->images_name[i] = *texture;
-	*texture = get_next_line_without_nl(fd);
-	if (!*texture)
+	data->images_name[i] = ft_strdup(texture);
+	if (!data->images_name[i])
 	{
-		close(fd);
-		safe_exit_parse(data, NULL, NULL, "Allocation");
+		return (FALSE);
 	}
+	return (TRUE);
 }
+
+/*
+fill_texture :
+strncmp 3 chars, si dans tab && image_name == NULL
+
+fill_color
+*/

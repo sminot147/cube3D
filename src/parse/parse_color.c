@@ -6,26 +6,49 @@ static t_bool	set_color(char *line, size_t *color);
 static int		count_char(char *str, char c);
 static int		color_atoi(char *str);
 
-void	parse_color(int fd, t_data *data)
+t_bool	fill_colors(char *line, t_data *data)
 {
-	char	*line;
+	char	tab[2][2];
+	int		i;
 
-	line = get_next_line_without_nl(fd);
-	if (!line || ft_strncmp(line, "F ", 2) || count_char(line, ',') != 2 \
-		|| !set_color(line + 2, &data->map->floor_color))
+	ft_memcpy(tab[0], "F ", 3);
+	ft_memcpy(tab[1], "C ", 3);
+	if (ft_strncmp(line, "F ", 2) || count_char(line, ',') != 2)
 	{
-		close(fd);
-		safe_exit_parse(data, NULL, line, "Something wrong in color parsing");
+		return (FALSE);
 	}
-	free(line);
-	line = get_next_line_without_nl(fd);
-	if (!line || ft_strncmp(line, "C ", 2) || count_char(line, ',') != 2 \
-		|| !set_color(line + 2, &data->map->ceiling_color))
+	else if (!set_color(line + 2, &data->map->floor_color))
+
+	i = 0;
+	while (i < 2)
 	{
-		close(fd);
-		safe_exit_parse(data, NULL, line, "Something wrong in color parsing");
+		if (!ft_strncmp(tab[i], line, 2))
+		{
+			return (parse_color(data, line));
+		}
+		++i;
 	}
-	free(line);
+	return (FALSE);
+}
+
+static t_bool	parse_color(t_data *data, char *color_line)
+{
+	t_map	*map;
+
+	map = data->map;
+	if (count_char(color_line(line, ',') == 2))
+	{
+
+	if (*color_line == 'F' && !map->floor_color)
+	{
+
+	}
+	else if (*color_line == 'C' && !map->ceiling_color)
+	{
+
+	}
+	}
+	return (FALSE);
 }
 
 static t_bool	set_color(char *line, size_t *color)

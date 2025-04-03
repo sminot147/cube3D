@@ -24,5 +24,6 @@
 # define NB_RAY 1600
 
 # define IMAGE_SIZE 64
+# define TEXTURE_ERR "Something Wrong in Textures"
 
 #endif

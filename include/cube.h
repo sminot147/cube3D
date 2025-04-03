@@ -19,9 +19,6 @@ void		check_map_validity(t_data *data);
 void		init_data(t_data *data);
 void		render_view(t_data *data);
 
-void		parse_textures(int fd, t_data *data);
-void		parse_color(int fd, t_data *data);
-
 /* ************************************************************************** */
 /*								PROCESS										  */
 /* ************************************************************************** */
