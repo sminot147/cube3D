@@ -2,9 +2,9 @@
 #include "define.h"
 #include "utils.h"
 
-static t_bool	set_color(char *line, unsigned int *color);
-static int	count_char(char *str, char c);
-static int	color_atoi(char *str);
+static t_bool	set_color(char *line, size_t *color);
+static int		count_char(char *str, char c);
+static int		color_atoi(char *str);
 
 void	parse_color(int fd, t_data *data)
 {
@@ -28,7 +28,7 @@ void	parse_color(int fd, t_data *data)
 	free(line);
 }
 
-static t_bool	set_color(char *line, unsigned int *color)
+static t_bool	set_color(char *line, size_t *color)
 {
 	char	**char_colors;
 	int		rgb[3];

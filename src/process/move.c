@@ -1,5 +1,6 @@
 #include "struct.h"
 #include "define.h"
+#include <math.h>
 
 /**
  * @brief Checks if a given position is inside a wall on the map.
@@ -74,14 +75,14 @@ int	mouse_move(int x, int y, void *param)
 		data->mouse_pos.x = x;
 		if (data->view_angle <= 0)
 		{
-			data->view_angle = RADIANT_MAX;
+			data->view_angle = M_PI * 2;
 		}
 	}
 	else if (WIDTH * 0.5 > x)
 	{
 		data->view_angle += 0.015;
 		data->mouse_pos.x = x;
-		if (data->view_angle >= RADIANT_MAX)
+		if (data->view_angle >= M_PI * 2)
 		{
 			data->view_angle = 0;
 		}
@@ -100,13 +101,13 @@ void	arrow_angle_update(t_data *data, int left, int right)
 		data->view_angle += 0.05;
 		if (data->view_angle <= 0)
 		{
-			data->view_angle = RADIANT_MAX;
+			data->view_angle = M_PI * 2;
 		}
 	}
 	else if (right)
 	{
 		data->view_angle -= 0.01;
-		if (data->view_angle >= RADIANT_MAX)
+		if (data->view_angle >= M_PI * 2)
 		{
 			data->view_angle = 0;
 		}

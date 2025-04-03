@@ -1,7 +1,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-#include <unistd.h>
+# include <unistd.h>
 
 typedef enum e_bool
 {
@@ -19,8 +19,8 @@ typedef enum e_direction
 
 typedef struct s_map
 {
-	unsigned int ceiling_color;
-	unsigned int floor_color;
+	size_t	ceiling_color;
+	size_t	floor_color;
 	size_t	x_max;
 	size_t	y_max;
 	int		**grid;
@@ -34,19 +34,19 @@ typedef struct s_end_ray
 	t_direction	wall;
 }	t_end_ray;
 
-typedef	struct s_vi2d
+typedef struct s_vi2d
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_vi2d;
 
-typedef	struct s_vf2d
+typedef struct s_vf2d
 {
-	float x;
-	float y;
+	float	x;
+	float	y;
 }	t_vf2d;
 
-typedef	struct s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*name;
@@ -56,7 +56,7 @@ typedef	struct s_img
 	int		size_line;
 }	t_img;
 
-typedef struct	s_mlx_inf
+typedef struct s_mlx_inf
 {
 	void	*mlx;
 	void	*win;

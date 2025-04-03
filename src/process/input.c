@@ -19,11 +19,10 @@ void	process_input(t_data *data)
 	mlx_hook(inf->win, 2, 1L << 0, key_press, data);
 	mlx_hook(inf->win, 3, 1L << 1, key_release, data);
 	mlx_hook(inf->win, 6, 1L << 6, mouse_move, data);
-	mlx_hook(inf->win, 17, 0L<< 0, close_program, data);
+	mlx_hook(inf->win, 17, 0L << 0, close_program, data);
 	mlx_loop_hook(inf->mlx, update_action, data);
 	mlx_loop(data->mlx_inf->mlx);
 }
-
 
 /**
  * @brief Handles key press events and updates the corresponding key state.

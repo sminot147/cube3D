@@ -1,5 +1,4 @@
 #include "define.h"
-#include "struct.h"
 #include "cube.h"
 #include "utils.h"
 
@@ -8,20 +7,14 @@ void	render_ray3d(float ray_index, t_end_ray *ray, t_data *data)
 	int	x_coords[2];
 	int	wall_edge[2];
 	int	half_wall_height;
-	int	image_x;
 
 	ray_index = FIELD_OF_VIEW - (ray_index + FIELD_OF_VIEW * 0.5);
-	if (ray->dist < 1)
-		ray->dist = 1;
-	half_wall_height = (HEIGHT / ray->dist) * 1;
-	wall_edge[0] = HALF_HEIGHT + half_wall_height;
-	wall_edge[1] = HALF_HEIGHT - half_wall_height;
+	half_wall_height = HEIGHT / ray->dist;
+	wall_edge[0] = HEIGHT * 0.5 + half_wall_height;
+	wall_edge[1] = HEIGHT * 0.5 - half_wall_height;
 	x_coords[0] = (ray_index * (WIDTH / FIELD_OF_VIEW + 1));
 	x_coords[1] = get_image_xposition(ray);
-	draw_texture(ray->wall, x_coords, wall_edge, data);
-	// color = ((int)((16 - ray->dist) * 16) << ray->wall * 8);
-	// draw_line(data->mlx_inf, (t_vf2d){pixel_x, wall_edge[0]}, 
-							// (t_vf2d){pixel_x, wall_edge[1]}, color);
+	draw_texture(ray, x_coords, wall_edge, data);
 }
 
 void	render_surface(int screen_midpoint_y, t_data *data)

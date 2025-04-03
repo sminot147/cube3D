@@ -49,7 +49,7 @@ void	draw2d_camera(t_mlx_data *inf, t_data *data, int ts)
 {
 	t_vf2d	angle_pos;
 
-	angle_pos.x = data->player_pos.x  + cos(data->view_angle);
+	angle_pos.x = data->player_pos.x + cos(data->view_angle);
 	angle_pos.y = data->player_pos.y - sin(data->view_angle);
 	draw2d_line(inf, ts, angle_pos, data->player_pos);
 	draw_circle(inf, data->player_pos, ts, GREEN);
@@ -69,15 +69,15 @@ static void	draw2d_grid(t_mlx_data *inf, int ts, t_map *map)
 	i = 0;
 	while (i <= map->y_max + 1)
 	{
-		draw_line(inf, (t_vf2d){0, ts*i}, \
-					(t_vf2d){(map->x_max+1) * ts, ts*i}, BLACK);
+		draw_line(inf, (t_vf2d){0, ts * i}, \
+					(t_vf2d){(map->x_max + 1) * ts, ts * i}, BLACK);
 		++i;
 	}
 	i = 0;
 	while (i <= map->x_max + 1)
 	{
-		draw_line(inf, (t_vf2d){ts*i, 0},
-					(t_vf2d){ts*i, (map->y_max+1) * ts}, BLACK);
+		draw_line(inf, (t_vf2d){ts * i, 0}, \
+					(t_vf2d){ts * i, (map->y_max + 1) * ts}, BLACK);
 		++i;
 	}
 }

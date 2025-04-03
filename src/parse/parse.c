@@ -79,7 +79,6 @@ static void	read_map(int fd, t_lststr **lst_map, t_data *data)
 	ft_memset(&status, 0, sizeof(status));
 	status.map_is_valid = TRUE;
 	line = get_next_line_without_nl(fd);
-	
 	while (line)
 	{
 		if (set_status_and_is_map(line, &status))
@@ -100,7 +99,7 @@ static void	read_map(int fd, t_lststr **lst_map, t_data *data)
 				close(fd);
 				safe_exit_parse(data, lst_map, line, "Map invalid");
 			}
-			free(line);//faire la fonction qui change les textures + free la line
+			free(line);
 		}
 		line = get_next_line_without_nl(fd);
 	}

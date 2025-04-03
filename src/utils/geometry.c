@@ -11,7 +11,7 @@
  */
 void	set_pixel(t_mlx_data *inf, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 	{
@@ -29,26 +29,26 @@ void	set_pixel(t_mlx_data *inf, int x, int y, int color)
  * @param point2 Ending point of the line (t_vf2d structure).
  * @param color Color of the line in hexadecimal format.
  */
-void    draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color)
+void	draw_line(t_mlx_data *inf, t_vf2d point1, t_vf2d point2, int color)
 {
-    float    dx;
-    float    dy;
-    int    len;
+	int		len;
+	float	dx;
+	float	dy;
 
-    dx = point2.x - point1.x;
-    dy = point2.y - point1.y;
-    len = sqrtf(dx * dx + dy * dy);
-    dx /= len;
-    dy /= len;
+	dx = point2.x - point1.x;
+	dy = point2.y - point1.y;
+	len = sqrtf(dx * dx + dy * dy);
+	dx /= len;
+	dy /= len;
 	if (len > (WIDTH + HEIGHT))
 		len = WIDTH + HEIGHT;
-    while (len > 0)
-    {
+	while (len > 0)
+	{
 		point1.x += dx;
 		point1.y += dy;
-        set_pixel(inf, point1.x, point1.y, color);
-        len--;
-    }
+		set_pixel(inf, point1.x, point1.y, color);
+		len--;
+	}
 }
 
 /**
@@ -64,7 +64,7 @@ void	draw_square(t_mlx_data *inf, t_vi2d position, int tile_size, int color)
 	int	x_first;
 	int	y_first;
 	int	x_added;
-	int y_added;
+	int	y_added;
 
 	y_added = 0;
 	x_first = position.x * tile_size;
@@ -91,23 +91,23 @@ void	draw_square(t_mlx_data *inf, t_vi2d position, int tile_size, int color)
  */
 void	draw_circle(t_mlx_data *inf, t_vf2d pos, int diam, int color)
 {
+	int		x_added;
+	int		y_added;
 	float	x_first;
 	float	y_first;
-	int		x_added;
-	int 	y_added;
 	float	distance;
 
 	y_added = 0;
-	x_first = pos.x*diam - diam/2;
-	y_first = pos.y*diam - diam/2;
+	x_first = pos.x * diam - diam * 0.5;
+	y_first = pos.y * diam - diam * 0.5;
 	while (y_added < diam)
 	{
 		x_added = 0;
 		while (x_added < diam)
 		{
-            distance = sqrt((x_added - diam/2) * (x_added - diam/2) \
-							+ (y_added - diam/2) * (y_added - diam/2));
-			if (!(distance > (diam/8)) || !(distance < diam))
+			distance = sqrt((x_added - diam * 0.5) * (x_added - diam * 0.5) \
+							+ (y_added - diam * 0.5) * (y_added - diam * 0.5));
+			if (!(distance > (diam * 0.125)) || !(distance < diam))
 			{
 				set_pixel(inf, x_first + x_added, y_first + y_added, color);
 			}
@@ -129,7 +129,7 @@ void	set_pixels(t_mlx_data *inf, int c, size_t n, char *address)
 		x = 0;
 		while (x < WIDTH && (x * y) < n)
 		{
-			dst = address + (y * inf->size_line + x * (inf->bpp / 8));
+			dst = address + (int)(y * inf->size_line + x * (inf->bpp * 0.125));
 			*(unsigned int *)dst = c;
 			x ++;
 		}

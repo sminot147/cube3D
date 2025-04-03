@@ -74,7 +74,7 @@ size_t	len_lst(t_lststr **lst_str)
 
 	len = 0;
 	current = *lst_str;
-	while(current)
+	while (current)
 	{
 		current = current->next;
 		++len;

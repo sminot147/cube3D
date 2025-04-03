@@ -2,7 +2,7 @@
 #include "utils.h"
 
 static void	free_data(t_data *data);
-static void close_mlx(t_mlx_data *inf);
+static void	close_mlx(t_mlx_data *inf);
 
 void	exit_free_with_msg(char *comment, t_data *data, int code)
 {
@@ -33,11 +33,11 @@ static void	free_data(t_data *data)
 			free_double_array((void **)data->map->grid);
 		free(data->map);
 	}
-	while (i-- >= 0)
+	while (--i >= 0)
 	{
 		free(data->images_name[i]);
 		if (data->face[i].img)
-		{
+		{// DESTROY CETTE *** D IMAGE
 			free(data->face[i].img);
 		}
 	}
@@ -45,7 +45,7 @@ static void	free_data(t_data *data)
 		free(data->mlx_inf);
 }
 
-static void close_mlx(t_mlx_data *info)
+static void	close_mlx(t_mlx_data *info)
 {
 	mlx_destroy_image(info->mlx, info->img);
 	mlx_destroy_window(info->mlx, info->win);

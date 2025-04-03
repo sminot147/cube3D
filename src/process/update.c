@@ -34,11 +34,11 @@ static t_bool	need_visual_update(t_data *data)
 	t_bool		flag;
 
 	flag = FALSE;
-	if (!isequal_vi2d(data->mouse_pos, (t_vi2d){HALF_WIDTH, HALF_HEIGHT}))
+	if (!isequal_vi2d(data->mouse_pos, (t_vi2d){WIDTH * 0.5, HEIGHT * 0.5}))
 	{
-		data->mouse_pos = (t_vi2d){HALF_WIDTH, HALF_HEIGHT};
+		data->mouse_pos = (t_vi2d){WIDTH * 0.5, HEIGHT * 0.5};
 		mlx_mouse_move(data->mlx_inf->mlx, data->mlx_inf->win, \
-					HALF_WIDTH, HALF_HEIGHT);
+					WIDTH * 0.5, HEIGHT * 0.5);
 		flag = TRUE;
 	}
 	if (data->key[NORTH] && try_move(data, 0))
@@ -68,7 +68,7 @@ static t_bool	change_mapsize(t_data *data, int zoom)
 	}
 	else if (!zoom)
 	{
-		data->tile_size = (WIDTH / 6) / (data->map->x_max + 1);
+		data->tile_size = (WIDTH * 0.167) / (data->map->x_max + 1);
 	}
 	else
 	{

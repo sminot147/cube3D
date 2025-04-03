@@ -1,9 +1,8 @@
 #ifndef DEFINE_H
 # define DEFINE_H
 
-#include <X11/keysym.h>
-#include <X11/X.h>
-#include <math.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 
 # define RED 0xFF0000
 # define WHITE 0xFFFFFF
@@ -20,14 +19,10 @@
 
 # define WIDTH 1280
 # define HEIGHT 960
-# define HALF_WIDTH WIDTH * 0.5
-# define HALF_HEIGHT HEIGHT * 0.5
 
 # define FIELD_OF_VIEW 60
 # define NB_RAY 1600
 
 # define IMAGE_SIZE 64
-
-# define RADIANT_MAX M_PI * 2
 
 #endif

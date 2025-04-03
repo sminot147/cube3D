@@ -10,7 +10,7 @@ static void	fill_img(t_data *data);
  */
 void	render_view(t_data *data)
 {
-	t_mlx_data *inf;
+	t_mlx_data	*inf;
 
 	inf = data->mlx_inf;
 	ft_bzero(inf->data, inf->size_line * HEIGHT);
