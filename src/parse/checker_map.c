@@ -40,21 +40,24 @@ static t_bool	this_line_is_valide(t_data *data, size_t i, size_t j)
 static void	look_first_char(t_data *data)
 {
 	size_t	i;
+	size_t	max;
 
+	max = data->map->x_max;
 	i = -1;
 	while (++i <= data->map->y_max)
 	{
-		if (data->map->grid[i][0] != 1)
+		if (data->map->grid[i][0] != 1 && data->map->grid[i][0] != -1)
 			safe_exit_parse(data, NULL, NULL, "Map not close");
-		else if (data->map->grid[i][0] != -1)
+		if (data->map->grid[i][max] != 1 && data->map->grid[i][max] != -1)
 			safe_exit_parse(data, NULL, NULL, "Map not close");
 	}
+	max = data->map->y_max;
 	i = -1;
 	while (++i <= data->map->x_max)
 	{
-		if (data->map->grid[0][i] != 1)
+		if (data->map->grid[0][i] != 1 && data->map->grid[0][i] != -1)
 			safe_exit_parse(data, NULL, NULL, "Map not close");
-		else if (data->map->grid[0][i] != -1)
+		if (data->map->grid[max][i] != 1 && data->map->grid[max][i] != -1)
 			safe_exit_parse(data, NULL, NULL, "Map not close");
 	}
 }
