@@ -20,7 +20,7 @@
 # define WIDTH 1280
 # define HEIGHT 960
 
-# define FIELD_OF_VIEW 60
+# define FIELD_OF_VIEW 70
 # define NB_RAY 1600
 
 # define IMAGE_SIZE 64
