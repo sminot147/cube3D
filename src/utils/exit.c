@@ -9,8 +9,7 @@ void	safe_exit(t_data *data)
 	exit(EXIT_FAILURE);
 }
 
-void	safe_exit_parse(t_data *data, t_lststr **lst_map, char *line, \
-						char *error_message)
+void	safe_exit_parse(t_data *data, t_lststr **lst_map, char *error_message)
 {
 	int	i;
 
@@ -22,7 +21,6 @@ void	safe_exit_parse(t_data *data, t_lststr **lst_map, char *line, \
 	}
 	while (++i < 4)
 		free(data->images_name[i]);
-	free(line);
 	clear_lst_str(lst_map);
 	safe_exit(data);
 }

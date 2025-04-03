@@ -44,7 +44,6 @@ static void	look_first_char(t_data *data)
 
 	max = data->map->x_max;
 	i = -1;
-
 	while (++i <= data->map->y_max)
 	{
 		if (data->map->grid[i][0] != 1 && data->map->grid[i][0] != -1)
