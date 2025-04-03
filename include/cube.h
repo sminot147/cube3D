@@ -59,5 +59,5 @@ void		trace_ray_casting(t_data *data, t_mlx_data *inf, int ts);
 void	render_ray3d(float ray_index, t_end_ray *ray, t_data *data);
 void	render_surface(int screen_midpoint_y, t_data *data);
 int		get_image_xposition(t_end_ray *ray);
-void	draw_texture(int img_x, int x, int y_edge[2], t_data *data);
+void	draw_texture(t_direction wall, int x_coords[2], int y_edge[2], t_data *data);
 #endif

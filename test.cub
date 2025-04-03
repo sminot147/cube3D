@@ -1,7 +1,7 @@
 NO ./assets/barrel_bottom.xpm
-SO ./assets/barrel_bottom.xpm
-WE ./assets/barrel_bottom.xpm
-EA ./assets/barrel_bottom.xpm
+SO ./assets/barrel_side.xpm
+WE ./assets/barrel_top_open.xpm
+EA ./assets/barrel_top.xpm
 
 F 220,100,0
 C 225,30,255
