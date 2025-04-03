@@ -40,16 +40,21 @@ static t_bool	this_line_is_valide(t_data *data, size_t i, size_t j)
 static void	look_first_char(t_data *data)
 {
 	size_t	i;
-	size_t	j;
 
 	i = -1;
-
 	while (++i <= data->map->y_max)
 	{
-		j = -1;
-		while (++j <= data->map->x_max && data->map->grid[i][j] == -1)
-			;
-		if (data->map->grid[i][j] != 1)
+		if (data->map->grid[i][0] != 1)
+			safe_exit_parse(data, NULL, NULL, "Map not close");
+		else if (data->map->grid[i][0] != -1)
+			safe_exit_parse(data, NULL, NULL, "Map not close");
+	}
+	i = -1;
+	while (++i <= data->map->x_max)
+	{
+		if (data->map->grid[0][i] != 1)
+			safe_exit_parse(data, NULL, NULL, "Map not close");
+		else if (data->map->grid[0][i] != -1)
 			safe_exit_parse(data, NULL, NULL, "Map not close");
 	}
 }
@@ -60,7 +65,7 @@ void	check_map_validity(t_data *data)
 	size_t	j;
 
 	i = -1;
-	look_first_char(data);
+	look_first_char(data);//1 / -1 retour
 	while (++i <= data->map->y_max)
 	{
 		j = -1;

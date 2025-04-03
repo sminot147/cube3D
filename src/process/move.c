@@ -12,23 +12,25 @@
 static t_bool	is_in_wall(t_vf2d pos, int **map)
 {
 	t_bool	flag;
+	float	collision_var;
 
+	collision_var = 0.3;
 	flag = FALSE;
-	if (map[(int)(pos.y + 0.1)][(int)pos.x])
+	if (map[(int)(pos.y + collision_var)][(int)pos.x])
 		flag = TRUE;
-	else if (map[(int)(pos.y - 0.1)][(int)pos.x])
+	else if (map[(int)(pos.y - collision_var)][(int)pos.x])
 		flag = TRUE;
-	else if (map[(int)pos.y][(int)(pos.x + 0.1)])
+	else if (map[(int)pos.y][(int)(pos.x + collision_var)])
 		flag = TRUE;
-	else if (map[(int)pos.y][(int)(pos.x - 0.1)])
+	else if (map[(int)pos.y][(int)(pos.x - collision_var)])
 		flag = TRUE;
-	else if (map[(int)(pos.y + 0.1)][(int)(pos.x - 0.1)])
+	else if (map[(int)(pos.y + collision_var)][(int)(pos.x - collision_var)])
 		flag = TRUE;
-	else if (map[(int)(pos.y + 0.1)][(int)(pos.x + 0.1)])
+	else if (map[(int)(pos.y + collision_var)][(int)(pos.x + collision_var)])
 		flag = TRUE;
-	else if (map[(int)(pos.y - 0.1)][(int)(pos.x - 0.1)])
+	else if (map[(int)(pos.y - collision_var)][(int)(pos.x - collision_var)])
 		flag = TRUE;
-	else if (map[(int)(pos.y - 0.1)][(int)(pos.x + 0.1)])
+	else if (map[(int)(pos.y - collision_var)][(int)(pos.x + collision_var)])
 		flag = TRUE;
 	return (flag);
 }
