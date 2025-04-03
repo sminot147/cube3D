@@ -12,13 +12,13 @@ static void	creat_map(t_lststr **lst_map, t_data *data)
 
 	data->map->grid = ft_calloc(data->map->y_max + 2, sizeof(int *));
 	if (data->map->grid == NULL)
-		safe_exit_parse(data, lst_map, NULL, "Malloc Failed");
+		safe_exit_parse(data, lst_map, "Malloc Failed");
 	i = -1;
 	while (++i <= data->map->y_max)
 	{
 		data->map->grid[i] = ft_calloc(data->map->x_max + 1, sizeof(int));
 		if (data->map->grid[i] == NULL)
-			safe_exit_parse(data, lst_map, NULL, "Malloc Failed");
+			safe_exit_parse(data, lst_map, "Malloc Failed");
 	}
 }
 
@@ -66,7 +66,7 @@ static void	treat_one_line(t_lststr *line, t_data *data, size_t i, \
 		else if (ft_strchr("NESW", line->content[j]) != 0)
 		{
 			if (place_player(data, j, i, line->content[j]))
-				safe_exit_parse(data, lst_map, NULL, NULL);
+				safe_exit_parse(data, lst_map, NULL);
 			data->map->grid[i][j] = 0;
 		}
 		else if (ft_strchr("01", line->content[j]) != 0)
@@ -75,7 +75,7 @@ static void	treat_one_line(t_lststr *line, t_data *data, size_t i, \
 		{
 			putstr_fd("Error\nInvalide line on map file : ", 2);
 			putendl_fd(line->content, 2);
-			safe_exit_parse(data, lst_map, NULL, NULL);
+			safe_exit_parse(data, lst_map, NULL);
 		}
 	}
 	if (j <= data->map->x_max && --j)

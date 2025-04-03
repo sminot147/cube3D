@@ -49,7 +49,6 @@ typedef struct s_vf2d
 typedef struct s_img
 {
 	void	*img;
-	char	*name;
 	void	*addr;
 	int		bpp;
 	int		endian;

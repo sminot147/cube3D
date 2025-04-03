@@ -7,8 +7,8 @@
 /*                                exit.c                                     */
 /*---------------------------------------------------------------------------*/
 void		safe_exit(t_data *data);
-void		safe_exit_parse(t_data *data, t_lststr **lst_map, char *line, \
-						char *error_message);
+void		safe_exit_parse(t_data *data, t_lststr **lst_map, \
+							char *error_message);
 
 /*---------------------------------------------------------------------------*/
 /*                               lst_str.c                                   */

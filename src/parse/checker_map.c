@@ -44,22 +44,21 @@ static void	look_first_char(t_data *data)
 
 	max = data->map->x_max;
 	i = -1;
-
 	while (++i <= data->map->y_max)
 	{
 		if (data->map->grid[i][0] != 1 && data->map->grid[i][0] != -1)
-			safe_exit_parse(data, NULL, NULL, "Map not close");
+			safe_exit_parse(data, NULL, "Map not close");
 		if (data->map->grid[i][max] != 1 && data->map->grid[i][max] != -1)
-			safe_exit_parse(data, NULL, NULL, "Map not close");
+			safe_exit_parse(data, NULL, "Map not close");
 	}
 	max = data->map->y_max;
 	i = -1;
 	while (++i <= data->map->x_max)
 	{
 		if (data->map->grid[0][i] != 1 && data->map->grid[0][i] != -1)
-			safe_exit_parse(data, NULL, NULL, "Map not close");
+			safe_exit_parse(data, NULL, "Map not close");
 		if (data->map->grid[max][i] != 1 && data->map->grid[max][i] != -1)
-			safe_exit_parse(data, NULL, NULL, "Map not close");
+			safe_exit_parse(data, NULL, "Map not close");
 	}
 }
 
@@ -78,11 +77,11 @@ void	check_map_validity(t_data *data)
 			if (data->map->grid[i][j] == -1)
 			{
 				if (line_above_is_valide(data, i, j) == FALSE)
-					safe_exit_parse(data, NULL, NULL, "Map not close");
+					safe_exit_parse(data, NULL, "Map not close");
 				if (this_line_is_valide(data, i, j) == FALSE)
-					safe_exit_parse(data, NULL, NULL, "Map not close");
+					safe_exit_parse(data, NULL, "Map not close");
 				if (line_below_is_valide(data, i, j) == FALSE)
-					safe_exit_parse(data, NULL, NULL, "Map not close");
+					safe_exit_parse(data, NULL, "Map not close");
 			}
 		}
 	}

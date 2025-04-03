@@ -26,20 +26,22 @@ static void	free_data(t_data *data)
 {
 	int	i;
 
-	i = 4;
+	i = 0;
 	if (data->map)
 	{
 		if (data->map->grid)
 			free_double_array((void **)data->map->grid);
 		free(data->map);
 	}
-	while (--i >= 0)
+	while (i < 4)
 	{
 		free(data->images_name[i]);
 		if (data->face[i].img)
 		{// DESTROY CETTE *** D IMAGE
 			free(data->face[i].img);
 		}
+		printf("%d\n", i);
+		++i;
 	}
 	if (data->mlx_inf)
 		free(data->mlx_inf);

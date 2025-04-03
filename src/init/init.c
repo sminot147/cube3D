@@ -75,7 +75,7 @@ static void	load_imgs(t_data *data, t_img face[4], char *img_name[4])
 	t_mlx_data	*info;
 
 	i = -1;
-	size = 64;
+	size = IMAGE_SIZE;
 	info = data->mlx_inf->mlx;
 	while (++i < 4)
 	{
