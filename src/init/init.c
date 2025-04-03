@@ -79,7 +79,7 @@ static void	load_imgs(t_data *data, t_img face[4], char *img_name[4])
 	info = data->mlx_inf->mlx;
 	while (++i < 4)
 	{
-		name = img_name[i] + 3;
+		name = img_name[i];
 		face[i].img = mlx_xpm_file_to_image(info, name, &size, &size);
 		if (!face[i].img)
 			exit_free_with_msg("Something went wrong with textures", data, 1);

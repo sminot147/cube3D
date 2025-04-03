@@ -2,24 +2,19 @@
 #include "define.h"
 #include "utils.h"
 
+static t_bool	parse_color(t_data *data, char *color_line);
 static t_bool	set_color(char *line, size_t *color);
 static int		count_char(char *str, char c);
 static int		color_atoi(char *str);
 
 t_bool	fill_colors(char *line, t_data *data)
 {
-	char	tab[2][2];
+	char	tab[2][3];
 	int		i;
 
+	i = 0;
 	ft_memcpy(tab[0], "F ", 3);
 	ft_memcpy(tab[1], "C ", 3);
-	if (ft_strncmp(line, "F ", 2) || count_char(line, ',') != 2)
-	{
-		return (FALSE);
-	}
-	else if (!set_color(line + 2, &data->map->floor_color))
-
-	i = 0;
 	while (i < 2)
 	{
 		if (!ft_strncmp(tab[i], line, 2))
@@ -34,19 +29,21 @@ t_bool	fill_colors(char *line, t_data *data)
 static t_bool	parse_color(t_data *data, char *color_line)
 {
 	t_map	*map;
+	size_t	i;
 
+	i = 0;
 	map = data->map;
-	if (count_char(color_line(line, ',') == 2))
+	while (color_line[i] && !ft_isdigit(color_line[i]))
+		++i;
+	if (count_char(color_line, ',') != 2)
+		return (FALSE);
+	else if (*color_line == 'F' && !map->floor_color)
 	{
-
-	if (*color_line == 'F' && !map->floor_color)
-	{
-
+		return (set_color(&color_line[i], &map->floor_color));
 	}
 	else if (*color_line == 'C' && !map->ceiling_color)
 	{
-
-	}
+		return (set_color(&color_line[i], &map->ceiling_color));
 	}
 	return (FALSE);
 }

@@ -7,7 +7,7 @@ PARSE_DIR = $(SRC_DIR)parse/
 PARSE = parse.c\
 		fill_map.c\
 		fill_texture.c\
-		parse_color.c\
+		fill_color.c\
 		checker_map.c\
 
 INIT_DIR = $(SRC_DIR)init/

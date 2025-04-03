@@ -100,7 +100,7 @@ static void	read_map(int fd, t_lststr **lst_map, t_data *data)
 				close(fd);
 				safe_exit_parse(data, lst_map, line, "Invalid Map");
 			}
-			if (fill_texture(line, data) || fill_color(line, data))
+			if (!fill_textures(line, data) && !fill_colors(line, data))
 			{
 				close(fd);
 				safe_exit_parse(data, lst_map, line, TEXTURE_ERR);
@@ -145,7 +145,6 @@ void	parse_map(char *map_name, t_data *data)
 		putstr_fd("Error\nMap not open\n", 2);
 		safe_exit(data);
 	}
-	parse_textures(fd, data);
 	read_map(fd, &lst_map, data);
 	if (close(fd))
 		safe_exit_parse(data, &lst_map, NULL, "Map refuse to close");
