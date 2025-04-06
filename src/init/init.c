@@ -5,7 +5,7 @@
 static void		init_allocs(t_data *data);
 static void		init_vars(t_data *data);
 static t_bool	init_mlx(t_mlx_data *mlx_inf);
-static void		load_imgs(t_data *data, t_img img[4], char *img_name[4]);
+static void		load_imgs(t_data *data, t_img *face, char *img_name[4]);
 
 /**
  * @brief Centralize all initialization
@@ -67,7 +67,7 @@ static t_bool	init_mlx(t_mlx_data *mlx_inf)
 	return (TRUE);
 }
 
-static void	load_imgs(t_data *data, t_img face[4], char *img_name[4])
+static void	load_imgs(t_data *data, t_img *face, char *img_name[4])
 {
 	char		*name;
 	int			size;
@@ -75,7 +75,6 @@ static void	load_imgs(t_data *data, t_img face[4], char *img_name[4])
 	t_mlx_data	*info;
 
 	i = -1;
-	size = IMAGE_SIZE;
 	info = data->mlx_inf->mlx;
 	while (++i < 4)
 	{

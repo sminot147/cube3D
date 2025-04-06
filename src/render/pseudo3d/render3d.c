@@ -31,14 +31,4 @@ void	render_surface(int screen_midpoint_y, t_data *data)
 	color = data->map->floor_color;
 	set_pixels(data->mlx_inf, color, \
 		size_line * screen_midpoint_y, addr + size_line * screen_midpoint_y);
-	// draw_pioupiou();
 }
-// void	draw_pioupiou()
-// {
-// 	static int time_to_wait;
-// 	t_bool	nbr;
-
-// 	if (wait_fps() && ++time_to_wait > 30)
-// 		update(&nbr);
-// 	draw();
-// }
