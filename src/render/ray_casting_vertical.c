@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:12:19 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:12:21 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 12:18:47 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_bool	is_int(float nb)
 /**
  * @brief return TRUE if the ray reach a wall, FALSE otherwise
  */
-t_bool	is_wall(t_vf2d *point, t_data *data, float angle)
+t_bool	is_wall(t_vf2d *point, t_data *data)
 {
 	if ((point->x <= 0 || point->y <= 0 || point->x >= data->map->x_max || \
 			point->y >= data->map->y_max))
@@ -84,7 +84,7 @@ static t_bool	set_next_point_vertical(t_vf2d *next_point, \
 			next_point->x = current_pos->x - 1;
 		else
 			next_point->x = (float)(int)current_pos->x;
-		return (is_wall(next_point, data, angle));
+		return (is_wall(next_point, data));
 	}
 	if (cos(angle) < 0)
 	{
@@ -97,7 +97,7 @@ static t_bool	set_next_point_vertical(t_vf2d *next_point, \
 		next_point->x = (float)(int)current_pos->x + 1;
 	delta_x = current_pos->x - next_point->x;
 	next_point->y = current_pos->y + delta_x * tan(angle);
-	return (is_wall(next_point, data, angle));
+	return (is_wall(next_point, data));
 }
 
 /**

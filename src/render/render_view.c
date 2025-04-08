@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:12:06 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:12:08 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 12:17:40 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	fill_img(t_data *data)
 
 	tile_size = data->tile_size;
 	render_surface(HEIGHT * 0.5, data);
-	trace_ray_casting(data, data->mlx_inf, data->tile_size);
+	trace_ray_casting(data);
 	draw2d_map(tile_size, data->map, data->mlx_inf);
 	draw2d_camera(data->mlx_inf, data, tile_size);
 }
