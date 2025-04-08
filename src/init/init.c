@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:26:38 by vgarcia           #+#    #+#             */
-/*   Updated: 2025/04/08 12:26:39 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:29:25 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ static t_bool	init_mlx(t_mlx_data *mlx_inf)
 	return (TRUE);
 }
 
+/**
+ * @brief Load all the images parsed before
+ * @param t_data contains every informations of the program
+ * @param t_img pointer to the faces NO/EA/SO/WE 
+ * @param char tab to the four image's name
+ */
 static void	load_imgs(t_data *data, t_img *face, char *img_name[4])
 {
 	char		*name;

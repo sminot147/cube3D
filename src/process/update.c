@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:26:17 by vgarcia           #+#    #+#             */
-/*   Updated: 2025/04/08 12:26:18 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:32:20 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,13 @@ static t_bool	need_visual_update(t_data *data)
 	return (flag);
 }
 
+/**
+ * @brief Adjusts the tile size of the map based on zoom input and map dim.
+ *
+ * @param data Pointer to the main data structure containing map information.
+ * @param zoom Zoom level input.
+ * @return t_bool return true or false if there is an update needed.
+ */
 static t_bool	change_mapsize(t_data *data, int zoom)
 {
 	static t_bool	last_input;
@@ -84,11 +91,11 @@ static t_bool	change_mapsize(t_data *data, int zoom)
 	}
 	else if (!zoom)
 	{
-		data->tile_size = (min_dimension * 0.167) / (max);
+		data->tile_size = (min_dimension * 0.167) / max;
 	}
 	else
 	{
-		data->tile_size = min_dimension / (max);
+		data->tile_size = min_dimension / max;
 	}
 	last_input = zoom;
 	return (TRUE);
