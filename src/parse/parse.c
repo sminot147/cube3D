@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:40 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:56:56 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:06:59 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ void	parse_map(char *map_name, t_data *data)
 	lst_map = NULL;
 	if (fd == -1)
 	{
-		putstr_fd("Error\nMap not open\n", 2);
+		putstr_fd("Error\nFile issue\n", 2);
 		safe_exit(data);
 	}
 	read_map(fd, &lst_map, data);
