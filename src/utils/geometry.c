@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geometry.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:11:14 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:11:16 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 15:36:07 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	draw_circle(t_mlx_data *inf, t_vf2d pos, int diam, int color)
 		{
 			distance = sqrt((x_added - diam * 0.5) * (x_added - diam * 0.5) \
 							+ (y_added - diam * 0.5) * (y_added - diam * 0.5));
-			if (!(distance > (diam * 0.125)) || !(distance < diam))
+			if (!(distance > (diam * 0.25)) || !(distance < diam))
 			{
 				set_pixel(inf, x_first + x_added, y_first + y_added, color);
 			}

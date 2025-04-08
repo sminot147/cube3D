@@ -69,6 +69,8 @@ $(OBJ_DIR)%.o : %.c
 
 all : $(NAME)
 
+bonus : all
+
 $(LIBFT) : force
 	$(MAKE) -C $(LIBFT_DIR)
 
@@ -93,4 +95,4 @@ re : fclean all
 
 -include $(DEPS)
 
-.PHONY: all clean fclean re force
+.PHONY: all clean fclean re force bonus

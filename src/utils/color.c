@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:59 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:11:01 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 15:26:35 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 size_t	rgba_to_hexa(int r, int g, int b, int a)
 {
-	return ((r << 24) + (g << 16) + (b << 8) + a);
+	return ((a << 24) + (r << 16) + (g << 8) + b);
 }
