@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:12:22 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:12:25 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 12:18:35 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static t_bool	set_next_point_horizontal(t_vf2d *next_point, \
 			next_point->y = (float)(int)current_pos->y;
 		else
 			next_point->y = (float)(int)current_pos->y + 1;
-		return (is_wall(next_point, data, angle));
+		return (is_wall(next_point, data));
 	}
 	if (sin(angle) > 0)
 	{
@@ -69,7 +69,7 @@ static t_bool	set_next_point_horizontal(t_vf2d *next_point, \
 		next_point->y = (float)(int)current_pos->y + 1;
 	delta_y = current_pos->y - next_point->y;
 	next_point->x = current_pos->x + delta_y / tan(angle);
-	return (is_wall(next_point, data, angle));
+	return (is_wall(next_point, data));
 }
 
 /**
@@ -118,7 +118,7 @@ static t_end_ray	end_ray(t_data *data, float angle)
 /**
  * @brief Call different part of ray casting
  */
-void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
+void	trace_ray_casting(t_data *data)
 {
 	float		i;
 	float		angle;

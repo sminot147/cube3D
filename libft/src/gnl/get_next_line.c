@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 21:40:27 by sminot            #+#    #+#             */
-/*   Updated: 2025/03/25 22:01:40 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 12:19:33 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ char	*get_next_line_without_nl(int fd)
 	if (line[len - 1] == '\n')
 		line[len - 1] = '\0';
 	return (line);
-
 }
