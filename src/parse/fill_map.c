@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:28 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:10:36 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 12:53:29 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ static void	treat_one_line(t_lststr *line, t_data *data, size_t i, \
 			safe_exit_parse(data, lst_map, NULL);
 		}
 	}
-	if (j <= data->map->x_max && --j)
-		while (++j <= data->map->x_max)
-			data->map->grid[i][j] = -1;
+	if (j <= data->map->x_max)
+		while (j <= data->map->x_max)
+			data->map->grid[i][j++] = -1;
 }
 
 /**
@@ -105,6 +105,8 @@ void	creat_and_fill_map(t_lststr **lst_map, t_data *data)
 	size_t		i;
 	t_lststr	*current;
 
+	if (!*lst_map)
+		safe_exit_parse(data, lst_map, "No map");
 	creat_map(lst_map, data);
 	current = *lst_map;
 	i = -1;
