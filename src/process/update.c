@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:26:17 by vgarcia           #+#    #+#             */
-/*   Updated: 2025/04/08 12:32:20 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:56:24 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ static t_bool	change_mapsize(t_data *data, int zoom)
 	}
 	else if (!zoom)
 	{
-		data->tile_size = (min_dimension * 0.167) / max;
+		data->tile_size = (min_dimension * 0.167) / (max + 1);
 	}
 	else
 	{
-		data->tile_size = min_dimension / max;
+		data->tile_size = min_dimension / (max + 1);
 	}
 	last_input = zoom;
 	return (TRUE);

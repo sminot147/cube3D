@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:26:38 by vgarcia           #+#    #+#             */
-/*   Updated: 2025/04/08 12:29:25 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:56:09 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ static void	load_imgs(t_data *data, t_img *face, char *img_name[4])
 	char		*name;
 	int			size;
 	int			i;
+	int			j;
 	t_mlx_data	*info;
 
 	i = -1;
@@ -97,6 +98,10 @@ static void	load_imgs(t_data *data, t_img *face, char *img_name[4])
 	while (++i < 4)
 	{
 		name = img_name[i];
+		j = 0;
+		while (ft_isprint(name[j]))
+			++j;
+		name[j] = '\0';
 		face[i].img = mlx_xpm_file_to_image(info, name, &size, &size);
 		if (!face[i].img)
 			exit_free_with_msg("Something went wrong with textures", data, 1);
@@ -112,7 +117,7 @@ static void	load_imgs(t_data *data, t_img *face, char *img_name[4])
 static void	init_vars(t_data *data)
 {
 	data->tile_size = (ft_min(WIDTH, HEIGHT) * 0.167) \
-			/ (ft_max(data->map->x_max, data->map->y_max));
+			/ (ft_max(data->map->x_max + 1, data->map->y_max + 1));
 	data->mouse_pos.x = WIDTH * 0.5;
 	data->mouse_pos.y = HEIGHT * 0.5;
 	data->key[NORTH] = 0;

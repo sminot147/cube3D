@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:37 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:10:39 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 13:04:52 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_bool	parse_texture(t_data *data, int i, char *texture);
 t_bool	fill_textures(char *line, t_data *data)
 {
 	char	tab[4][4];
-	int		i;
+	size_t	i;
 
 	ft_memcpy(tab[0], "NO ", 4);
 	ft_memcpy(tab[1], "SO ", 4);
@@ -45,7 +45,7 @@ static t_bool	parse_texture(t_data *data, int index, char *texture)
 	while (texture[i] == ' ')
 		++i;
 	data->images_name[index] = ft_strdup(&texture[i]);
-	if (!data->images_name[i])
+	if (!data->images_name[index])
 	{
 		return (FALSE);
 	}
