@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 12:26:32 by vgarcia           #+#    #+#             */
+/*   Updated: 2025/04/08 12:26:33 by vgarcia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UTILS_H
 # define UTILS_H
 
@@ -32,13 +44,12 @@ void		exit_with_msg(char *comment, int code);
 void		exit_free_with_msg(char *comment, t_data *data, int code);
 
 /* ************************************************************************** */
-/*									VEC_TOOLS								  */
+/*									CALCUL									  */
 /* ************************************************************************** */
 
-t_vi2d		sum_vi2d(t_vi2d position, t_vi2d to_sum);
-t_vi2d		sub_vi2d(t_vi2d position, t_vi2d to_sub);
-t_vi2d		mul_vi2d(t_vi2d position, t_vi2d to_mul);
 t_bool		isequal_vi2d(t_vi2d point1, t_vi2d point2);
+size_t		ft_max(size_t a, size_t b);
+size_t		ft_min(size_t a, size_t b);
 
 /* ************************************************************************** */
 /*									TIME									  */

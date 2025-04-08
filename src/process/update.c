@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   update.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 12:26:17 by vgarcia           #+#    #+#             */
+/*   Updated: 2025/04/08 12:26:18 by vgarcia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
 #include "define.h"
 #include "utils.h"
@@ -61,18 +73,22 @@ static t_bool	need_visual_update(t_data *data)
 static t_bool	change_mapsize(t_data *data, int zoom)
 {
 	static t_bool	last_input;
+	size_t			max;
+	size_t			min_dimension;
 
+	max = ft_max(data->map->x_max, data->map->y_max);
+	min_dimension = ft_min(WIDTH, HEIGHT);
 	if ((int)last_input == (int)zoom)
 	{
 		return (FALSE);
 	}
 	else if (!zoom)
 	{
-		data->tile_size = (WIDTH * 0.167) / (data->map->x_max + 1);
+		data->tile_size = (min_dimension * 0.167) / (max);
 	}
 	else
 	{
-		data->tile_size = WIDTH / (data->map->x_max + 1);
+		data->tile_size = min_dimension / (max);
 	}
 	last_input = zoom;
 	return (TRUE);

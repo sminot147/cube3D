@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 12:26:38 by vgarcia           #+#    #+#             */
+/*   Updated: 2025/04/08 12:26:39 by vgarcia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
 #include "utils.h"
 #include "define.h"
@@ -93,7 +105,8 @@ static void	load_imgs(t_data *data, t_img *face, char *img_name[4])
  */
 static void	init_vars(t_data *data)
 {
-	data->tile_size = (WIDTH * 0.167) / (data->map->x_max + 1);
+	data->tile_size = (ft_min(WIDTH, HEIGHT) * 0.167) \
+			/ (ft_max(data->map->x_max, data->map->y_max));
 	data->mouse_pos.x = WIDTH * 0.5;
 	data->mouse_pos.y = HEIGHT * 0.5;
 	data->key[NORTH] = 0;
