@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:26:38 by vgarcia           #+#    #+#             */
-/*   Updated: 2025/04/08 12:56:09 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/08 13:15:51 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	init_allocs(t_data *data)
 	}
 	if (!init_mlx(data->mlx_inf))
 	{
-		exit_free_with_msg("Allocation", data, 1);
+		exit_free_with_msg("MLX init issue", data, 1);
 	}
 	load_imgs(data, data->face, data->images_name);
 }

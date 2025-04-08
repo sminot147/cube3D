@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   end_program.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:11:02 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:11:03 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 13:13:23 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,11 @@ static void	free_data(t_data *data)
 
 static void	close_mlx(t_mlx_data *info)
 {
-	mlx_destroy_image(info->mlx, info->img);
-	mlx_destroy_window(info->mlx, info->win);
-	mlx_destroy_display(info->mlx);
+	if (info->mlx && info->img)
+		mlx_destroy_image(info->mlx, info->img);
+	if (info->mlx && info->win)
+		mlx_destroy_window(info->mlx, info->win);
+	if (info->mlx)
+		mlx_destroy_display(info->mlx);
 	free(info->mlx);
 }
