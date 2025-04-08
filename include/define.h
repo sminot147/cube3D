@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:35 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 13:22:46 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/08 13:59:20 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define WIDTH 1280
 # define HEIGHT 960
 
-# define FIELD_OF_VIEW 60
+# define FIELD_OF_VIEW 50
 # define NB_RAY 1350
 
 # define IMAGE_SIZE 64
