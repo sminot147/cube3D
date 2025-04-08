@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 12:12:22 by sminot            #+#    #+#             */
+/*   Updated: 2025/04/08 12:12:25 by sminot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "struct.h"
 #include "cube.h"
 #include "define.h"
@@ -7,9 +19,6 @@
  */
 t_end_ray	set_wall(t_end_ray point, t_data *data)
 {
-	if ((point.x <= 0 || point.y <= 0 || point.x > data->map->x_max || \
-			point.y > data->map->y_max))
-		print_one_point(&data->player_pos, "Attention t'a rien a foutre la : ---------------------- player pos :\n");
 	if (is_int(point.x))
 	{
 		if (data->map->grid[(int)point.y][(int)point.x] == 1)
@@ -124,80 +133,3 @@ void	trace_ray_casting(t_data *data, t_mlx_data *inf, int ts)
 		i += (float)FIELD_OF_VIEW / (float)NB_RAY;
 	}
 }
-
-/*----------------------------------------------------------------------------------------------
- void	draw2d_line1(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
- {
- 	t_vf2d	convert1;
- 	t_vf2d	convert2;
-
- 	convert1.x = point1.x * ts;
- 	convert1.y = point1.y * ts;
- 	convert2.x = point2.x * ts;
- 	convert2.y = point2.y * ts;
- 	draw_line(inf, convert1, convert2, GREEN);
- }
-
- void	draw2d_line2(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
- {
- 	t_vf2d	convert1;
- 	t_vf2d	convert2;
-
- 	convert1.x = point1.x * ts;
- 	convert1.y = point1.y * ts;
- 	convert2.x = point2.x * ts;
- 	convert2.y = point2.y * ts;
- 	draw_line(inf, convert1, convert2, YELLOW);
- }
-
- void	draw2d_line3(t_mlx_data *inf, int ts, t_vf2d point1, t_vf2d point2)
- {
- 	t_vf2d	convert1;
- 	t_vf2d	convert2;
-
- 	convert1.x = point1.x * ts;
- 	convert1.y = point1.y * ts;
- 	convert2.x = point2.x * ts;
- 	convert2.y = point2.y * ts;
- 	draw_line(inf, convert1, convert2, BLACK);
- }
-
-void	trace_ray_casting1(t_data *data, t_mlx_data *inf, int ts)
-{
-	int			i;
-	t_end_ray	end_ray1;
-	t_vf2d		end_ray2;
-	//float		angle;
-	static float angle = 0;
-
-	//angle = data->view_angle;
-	//angle = 45;
-	printf("angle = %f\n", angle * 180 / M_PI);
-	if (!(-0.001 < cos(angle) && cos(angle) < 0.001))
-	{
-		end_ray1 = end_ray_vertical(data, angle);
-		end_ray2.x = end_ray1.x;
-		end_ray2.y = end_ray1.y;
-		print_one_point(&end_ray2, "Veritacal Yellow : ");
-		draw2d_line2(inf, ts, end_ray2, data->player_pos);
-	}
-	if (!(-0.001 < sin(angle) && sin(angle) < 0.001))
-	{
-		end_ray1 = end_ray_horizontal(data, angle);
-		end_ray2.x = end_ray1.x;
-		end_ray2.y = end_ray1.y;
-		draw2d_line1(inf, ts, end_ray2, data->player_pos);
-		print_one_point(&end_ray2, "Horizontal GREEN : ");
-	}
-	end_ray1 = end_ray(data, angle);
-	end_ray2.x = end_ray1.x;
-	end_ray2.y = end_ray1.y;
-	draw2d_line3(inf, ts, end_ray2, data->player_pos);
-	print_one_point(&end_ray2, "End BLACK : ");
-	angle += M_PI / 180;
-	if (angle > 6.28 || angle < -6.28)
-		angle = 0;
-	usleep(1);
-}
-
-------------------------------------------------------------------------------------------------------------*/
