@@ -1,11 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_casting_vertical.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 12:12:19 by sminot            #+#    #+#             */
+/*   Updated: 2025/04/08 12:12:21 by sminot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "struct.h"
 #include "cube.h"
-
-void	print_one_point(t_vf2d *point, char *message)
-{
-	//fonction de debug a supp
-	printf("%s[%f , %f]\n", message, point->x, point->y);
-}
 
 /**
  * @return the distance between two point
