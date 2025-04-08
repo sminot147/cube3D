@@ -68,11 +68,13 @@ static t_bool	change_mapsize(t_data *data, int zoom)
 	}
 	else if (!zoom)
 	{
-		data->tile_size = (WIDTH * 0.167) / (data->map->x_max + 1);
+		data->tile_size = (WIDTH * 0.167) \
+				/ (ft_min(data->map->x_max + 1, data->map->y_max));
 	}
 	else
 	{
-		data->tile_size = WIDTH / (data->map->x_max + 1);
+		data->tile_size = WIDTH \
+				/ ft_min(data->map->x_max + 1, data->map->y_max);
 	}
 	last_input = zoom;
 	return (TRUE);

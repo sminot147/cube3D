@@ -29,7 +29,7 @@ UTILS = free_double_array.c\
 		geometry.c\
 		exit.c\
 		liste_str.c\
-		vector.c\
+		calcul.c\
 		color.c\
 		frame.c
 
