@@ -47,7 +47,7 @@ FILE = $(addprefix $(SRC_DIR), $(SRC_FILE))\
 	$(addprefix $(UTILS_DIR), $(UTILS))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD -g3
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE) -MMD
 MLX_FLAGS = -L$(MLX_DIR) -l$(MLX_DIR) -lXext -lX11 -lm
 INCLUDE = include
 
