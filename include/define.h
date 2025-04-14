@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:35 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 13:59:20 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/14 13:20:22 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define HEIGHT 960
 
 # define FIELD_OF_VIEW 50
-# define NB_RAY 1350
+# define NB_RAY 1500
 
 # define IMAGE_SIZE 64
 # define TEXTURE_ERR "Something Wrong in Textures"

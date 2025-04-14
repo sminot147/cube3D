@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:38 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:09:40 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/14 13:05:20 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,6 @@ typedef struct s_reading_map_status
 {
 	t_bool	map_start;
 	t_bool	map_is_end;
-	t_bool	param_start;
-	t_bool	param_is_end;
 	t_bool	map_is_valid;
 }	t_reading_map_status;
 

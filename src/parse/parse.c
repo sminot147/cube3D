@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:40 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 14:06:59 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/14 13:14:08 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,17 @@ static t_bool	set_status_and_is_map(char *line, t_reading_map_status *status)
 {
 	if (is_map_line(line) == TRUE)
 	{
-		status->map_start = TRUE;
 		if (status->map_is_end == TRUE)
 		{
 			status->map_is_valid = FALSE;
 			return (FALSE);
 		}
-		if (status->param_start == TRUE)
-			status->param_is_end = TRUE;
 		status->map_start = TRUE;
 		return (TRUE);
 	}
 	else
 	{
-		status->param_start = TRUE;
-		if (status->param_is_end == TRUE)
-			status->map_is_valid = FALSE;
-		if (status->map_start)
+		if (status->map_start == TRUE)
 			status->map_is_end = TRUE;
 		return (FALSE);
 	}
