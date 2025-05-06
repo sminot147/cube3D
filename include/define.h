@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:35 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/14 13:51:41 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/06 11:28:25 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define GRASS_GREEN 0x207125
 
 # define SPACE 4
-# define LEFT_ARROW 5
-# define RIGHT_ARROW 6
+# define L_ARROW 5
+# define R_ARROW 6
 
 # define WIDTH 1280
 # define HEIGHT 960

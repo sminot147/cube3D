@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 12:12:15 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:12:18 by sminot           ###   ########.fr       */
+/*   Created: 2025/05/06 13:57:10 by vgarcia           #+#    #+#             */
+/*   Updated: 2025/05/06 13:57:48 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,21 @@ void	draw_texture(t_end_ray *ray, int x_coords[2], \
 {
 	int			y;
 	int			color;
-	int			wall_size;
 	int			pixel_addr;
+	int			limiter;
 	t_img		img;
 
 	y = 0;
+	limiter = y_edge[0] - y_edge[1];
 	img = data->face[ray->wall];
-	wall_size = y_edge[0] - y_edge[1];
-	while (y < wall_size)
+	if (y_edge[1] < 0)
 	{
-		pixel_addr = y * IMAGE_SIZE / wall_size;
+		y = y_edge[1] * (-1);
+		limiter -= y;
+	}
+	while (y < limiter)
+	{
+		pixel_addr = y * IMAGE_SIZE / (y_edge[0] - y_edge[1]);
 		color = *(int *)(img.addr + \
 				(pixel_addr * img.size_line + x_coords[1] * (img.bpp / 8)));
 		set_pixel(data->mlx_inf, x_coords[0], y + y_edge[1], color);

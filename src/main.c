@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:11:21 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:11:23 by sminot           ###   ########.fr       */
+/*   Updated: 2025/04/30 08:59:26 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	init_data(&data);
 	render_view(&data);
 	process_input(&data);
-	return (1);
+	return (0);
 }
 
 static void	check_arg(int ac, char **av)

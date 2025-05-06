@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:26:17 by vgarcia           #+#    #+#             */
-/*   Updated: 2025/04/08 12:56:24 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/05/06 13:56:40 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "define.h"
 #include "utils.h"
 
-static t_bool	need_visual_update(t_data *data);
+static t_bool	new_visual_update(t_data *data);
 static t_bool	change_mapsize(t_data *data, int zoom);
+static t_bool	check_visual_orientation(t_data *data);
 
 /**
  * @brief Updates the game state based on user input and renders the view.
@@ -30,7 +31,7 @@ int	update_action(void *param)
 	data = (t_data *)param;
 	if (wait_fps())
 		return (0);
-	if (need_visual_update(data))
+	if (new_visual_update(data))
 		render_view(data);
 	return (0);
 }
@@ -41,7 +42,35 @@ int	update_action(void *param)
  * @param data Pointer to the main data structure.
  * @return Return (TRUE) or (FALSE) if a visual update is needed or not
  */
-static t_bool	need_visual_update(t_data *data)
+static t_bool	new_visual_update(t_data *data)
+{
+	t_bool		flag;
+
+	flag = FALSE;
+	if (data->key[NORTH] && try_move(data, 0))
+		flag = TRUE;
+	if (data->key[WEST] && try_move(data, M_PI * 0.5))
+		flag = TRUE;
+	if (data->key[SOUTH] && try_move(data, M_PI))
+		flag = TRUE;
+	if (data->key[EAST] && try_move(data, -M_PI * 0.5))
+		flag = TRUE;
+	if (data->key[R_ARROW] || data->key[L_ARROW])
+		flag = TRUE;
+	if (change_mapsize(data, data->key[SPACE]))
+		flag = TRUE;
+	if (check_visual_orientation(data))
+		flag = TRUE;
+	return (flag);
+}
+
+/**
+ * @brief Check if a visual update concerning the player orientation
+ * 
+ * @param data Pointer to the main data structure.
+ * @return Return (TRUE) or (FALSE) if a visual update is needed or not
+ */
+static t_bool	check_visual_orientation(t_data *data)
 {
 	t_bool		flag;
 
@@ -53,20 +82,11 @@ static t_bool	need_visual_update(t_data *data)
 					WIDTH * 0.5, HEIGHT * 0.5);
 		flag = TRUE;
 	}
-	if (data->key[NORTH] && try_move(data, 0))
+	if (data->key[R_ARROW] || data->key[L_ARROW])
+	{
+		arrow_angle_update(data, data->key[L_ARROW], data->key[R_ARROW]);
 		flag = TRUE;
-	if (data->key[WEST] && try_move(data, M_PI * 0.5))
-		flag = TRUE;
-	if (data->key[SOUTH] && try_move(data, M_PI))
-		flag = TRUE;
-	if (data->key[EAST] && try_move(data, -M_PI * 0.5))
-		flag = TRUE;
-	if (data->key[RIGHT_ARROW] || data->key[LEFT_ARROW])
-		flag = TRUE;
-	if (data->key[RIGHT_ARROW] || data->key[LEFT_ARROW])
-		arrow_angle_update(data, data->key[LEFT_ARROW], data->key[RIGHT_ARROW]);
-	if (change_mapsize(data, data->key[SPACE]))
-		flag = TRUE;
+	}
 	return (flag);
 }
 

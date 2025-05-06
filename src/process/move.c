@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
+/*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:56 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 12:10:57 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/06 12:45:32 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,17 +113,17 @@ void	arrow_angle_update(t_data *data, int left, int right)
 	else if (left)
 	{
 		data->view_angle += 0.05;
-		if (data->view_angle <= 0)
+		if (data->view_angle >= M_PI * 2)
 		{
-			data->view_angle = M_PI * 2;
+			data->view_angle = 0;
 		}
 	}
 	else if (right)
 	{
-		data->view_angle -= 0.01;
-		if (data->view_angle >= M_PI * 2)
+		data->view_angle -= 0.05;
+		if (data->view_angle <= 0)
 		{
-			data->view_angle = 0;
+			data->view_angle = M_PI * 2;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:26:38 by vgarcia           #+#    #+#             */
-/*   Updated: 2025/04/08 13:15:51 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/16 11:22:51 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,6 @@ static void	init_vars(t_data *data)
 	data->key[SOUTH] = 0;
 	data->key[WEST] = 0;
 	data->key[SPACE] = 0;
-	data->key[LEFT_ARROW] = 0;
-	data->key[RIGHT_ARROW] = 0;
+	data->key[L_ARROW] = 0;
+	data->key[R_ARROW] = 0;
 }

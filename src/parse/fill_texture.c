@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:37 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 13:04:52 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/05/06 11:44:23 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 #include "utils.h"
 
 static t_bool	parse_texture(t_data *data, int i, char *texture);
+static size_t	check_index_image(size_t i);
 
 t_bool	fill_textures(char *line, t_data *data)
 {
 	char	tab[4][4];
 	size_t	i;
+	size_t	image_index;
 
 	ft_memcpy(tab[0], "NO ", 4);
 	ft_memcpy(tab[1], "SO ", 4);
@@ -28,13 +30,22 @@ t_bool	fill_textures(char *line, t_data *data)
 	i = 0;
 	while (i <= 3)
 	{
-		if (!ft_strncmp(tab[i], line, 3) && !data->images_name[i])
+		image_index = check_index_image(i);
+		if (!ft_strncmp(tab[i], line, 3) && !data->images_name[image_index])
 		{
-			return (parse_texture(data, i, line + 3));
+			return (parse_texture(data, image_index, line + 3));
 		}
 		++i;
 	}
 	return (FALSE);
+}
+
+static size_t	check_index_image(size_t i)
+{
+	if (i % 2)
+		return (i - 1);
+	else
+		return (i + 1);
 }
 
 static t_bool	parse_texture(t_data *data, int index, char *texture)

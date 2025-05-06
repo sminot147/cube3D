@@ -6,7 +6,7 @@
 /*   By: vgarcia <vgarcia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:10:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/04/08 13:17:07 by vgarcia          ###   ########.fr       */
+/*   Updated: 2025/04/16 11:22:51 by vgarcia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ static int	key_press(int keycode, void *param)
 	else if (keycode == XK_d)
 		data->key[EAST] = 1;
 	else if (keycode == XK_Left)
-		data->key[LEFT_ARROW] = 1;
+		data->key[L_ARROW] = 1;
 	else if (keycode == XK_Right)
-		data->key[RIGHT_ARROW] = 1;
+		data->key[R_ARROW] = 1;
 	else if (keycode == XK_space)
 		data->key[SPACE] = 1;
 	return (0);
@@ -88,9 +88,9 @@ static int	key_release(int keycode, void *param)
 	else if (keycode == XK_d)
 		data->key[EAST] = 0;
 	else if (keycode == XK_Left)
-		data->key[LEFT_ARROW] = 0;
+		data->key[L_ARROW] = 0;
 	else if (keycode == XK_Right)
-		data->key[RIGHT_ARROW] = 0;
+		data->key[R_ARROW] = 0;
 	else if (keycode == XK_space)
 		data->key[SPACE] = 0;
 	return (0);
